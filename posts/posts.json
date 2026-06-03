@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "orbital-composition-analysis",
+    "title": "Orbital Composition Analysis",
+    "date": "2025-06-03",
+    "tags": ["chemistry", "tutorial"],
+    "summary": "A short walkthrough of how to break down molecular orbitals into atomic contributions, with example output and a formula or two."
+  },
+  {
+    "slug": "welcome",
+    "title": "Welcome to the New Site",
+    "date": "2025-05-12",
+    "tags": ["meta"],
+    "summary": "A quick hello and a guide to what you'll find here — and a demo of how a blog post is written in Markdown."
+  }
+]

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zhe WANG, Ph.D.</title>
+  <meta name="description" content="Personal homepage of Zhe WANG — computational chemistry, The University of Osaka.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="container">
+
+    <!-- ====================================================================
+         HERO  —  edit your name, alias, role and intro text here.
+         ==================================================================== -->
+    <section class="hero">
+      <div>
+        <h1 class="hero__name">Zhe WANG, Ph.D.</h1>
+        <div class="hero__alias">a.k.a. Zit WONG | 王哲 | 왕철</div>
+        <p class="hero__role">
+          Assistant Professor at
+          <a href="http://www.chem.eng.osaka-u.ac.jp/mori-lab/">Mori Lab.</a>,
+          The University of Osaka.
+        </p>
+        <p class="muted">
+          <!-- One or two sentences about yourself / your research focus. -->
+          I work on computational chemistry — electronic structure, aromaticity,
+          and tools that make these analyses easier. Replace this paragraph with
+          your own introduction.
+        </p>
+
+        <!-- SOCIAL LINKS — edit the href; the short label shows on the button. -->
+        <div class="socials">
+          <a href="mailto:wang.zhe.dr@gmail.com" title="Email">@</a>
+          <a href="https://bsky.app/profile/wangzhe.bsky.social" title="Bluesky">bsky</a>
+          <a href="https://twitter.com/oooooootetsu" title="X">X</a>
+          <a href="https://github.com/wongzit" title="GitHub">GH</a>
+          <a href="https://orcid.org/0000-0002-9996-586X" title="ORCID">iD</a>
+          <a href="https://scholar.google.com/citations?user=gzUh6CMAAAAJ" title="Google Scholar">GS</a>
+          <a href="https://www.researchgate.net/profile/Zhe-Wang-84/" title="ResearchGate">RG</a>
+          <a href="https://www.scopus.com/authid/detail.uri?authorId=57203902612" title="Scopus">Sc</a>
+        </div>
+      </div>
+
+      <!-- Put your photo at assets/img/prof_pic.png (or change the path). -->
+      <div>
+        <img class="hero__photo" src="assets/img/prof_pic.png"
+             alt="Zhe WANG"
+             onerror="this.style.opacity=.4;this.alt='add assets/img/prof_pic.png'">
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ====================================================================
+         NEWS  —  add a row at the TOP for each new item. Date | text.
+         ==================================================================== -->
+    <section>
+      <h2>News</h2>
+      <table class="info-table">
+        <tr><td>Jan 17, 2026</td><td>Thanks for 455k site visits in 2025!</td></tr>
+        <tr><td>Nov 11, 2025</td><td><a href="programs.html#pyaroma">py.Aroma 5 is out now.</a></td></tr>
+        <tr><td>Sep 22, 2025</td><td><a href="programs.html#molviewer">A new version of the Online Molecular Viewer has been released.</a></td></tr>
+      </table>
+    </section>
+
+    <!-- ====================================================================
+         LATEST POSTS  —  filled in automatically from your blog. No editing.
+         ==================================================================== -->
+    <section>
+      <h2>Latest posts <a class="mono faint" style="font-size:.7em" href="blog.html">view all →</a></h2>
+      <table class="info-table"><tbody id="home-latest-posts"></tbody></table>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ====================================================================
+         CONTACT / ADDRESS
+         ==================================================================== -->
+    <section>
+      <h2>Contact</h2>
+      <p class="muted">
+        Research Center for Environmental Preservation<br>
+        Division of Applied Chemistry, Graduate School of Engineering<br>
+        2-4 Yamadaoka, Suita, Osaka, 565-0871, Japan
+      </p>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/blog.js"></script>
+  <script>renderLatestPosts("home-latest-posts", 3);</script>
+</body>
+</html>
