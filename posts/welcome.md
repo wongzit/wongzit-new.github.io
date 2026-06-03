@@ -23,10 +23,11 @@ Use `##` for a section heading and `###` for a sub-heading. You can make text
 
 ## Images
 
-Put image files in the `assets/img/` folder and reference them like this:
+Put image files in the `assets/img/` folder and reference them with a leading
+slash (so they resolve correctly from the post's URL folder):
 
 ```
-![A caption for the image](assets/img/example.png)
+![A caption for the image](/assets/img/example.png)
 ```
 
 ## Code blocks

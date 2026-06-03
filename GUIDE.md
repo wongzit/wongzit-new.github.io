@@ -33,16 +33,23 @@ You never touch the `<head>` or the `<script>` lines at the bottom.
 
 ## ✍️ Adding a new blog post (the important one)
 
-Two steps. Say your post is titled *"My New Method"*.
+Each post gets a clean URL like `https://wongzit.github.io/my-new-method/`
+(the same style your old site used, so bookmarks and search results keep
+working). Publishing one is three small steps. Say the post is *"My New Method"*
+with slug `my-new-method` (lowercase, hyphens, no spaces — this becomes the URL).
 
 **Step 1 — write the post.**
-Create a new file `posts/my-new-method.md` and write in Markdown. The filename
-(without `.md`) is the "slug". Use lowercase and hyphens, no spaces.
+Create `posts/my-new-method.md` and write in Markdown. You can copy
+`posts/welcome.md` as a template — it shows every feature (headings, lists,
+images, code, tables, math).
 
-You can copy `posts/welcome.md` as a starting template — it shows every feature
-(headings, lists, images, code, tables, math).
+**Step 2 — give it its page (this creates the clean URL).**
+Duplicate the `_post-template` folder and rename the copy to your slug, so you
+have a folder `my-new-method/` containing `index.html`. You do **not** edit that
+`index.html` — it automatically shows the post whose slug matches the folder
+name. (There's a `README.txt` inside `_post-template` with the same reminder.)
 
-**Step 2 — list it.**
+**Step 3 — list it.**
 Open `posts/posts.json` and add an entry at the **top** of the list:
 
 ```json
@@ -58,12 +65,13 @@ Open `posts/posts.json` and add an entry at the **top** of the list:
 ]
 ```
 
-- `slug` must match the filename (without `.md`).
+- `slug` must match **both** the Markdown filename (`posts/my-new-method.md`)
+  **and** the folder name (`my-new-method/`).
 - `date` must be `YYYY-MM-DD` (this is how posts are sorted, newest first).
 - `tags` become clickable filters on the blog page. Use as many or few as you like.
 
-That's it. The post appears on `blog.html`, in the tag filters, and in the
-"Latest posts" list on the home page — all automatically.
+That's it. The post is live at `/my-new-method/` and appears on the blog page,
+in the tag filters, and in "Latest posts" on the home page — all automatically.
 
 > ⚠️ Watch the commas in `posts.json`: every entry needs a comma after it
 > **except the last one**. If the blog page goes blank, a missing or extra
@@ -74,7 +82,8 @@ That's it. The post appears on `blog.html`, in the tag filters, and in the
 - **Headings:** `## Section`, `### Subsection`
 - **Bold / italic:** `**bold**`, `*italic*`
 - **Links:** `[text](https://...)`
-- **Images:** put the file in `assets/img/` then `![caption](assets/img/file.png)`
+- **Images:** put the file in `assets/img/` then `![caption](/assets/img/file.png)`
+  (start the path with `/` so it works from the post's URL folder)
 - **Code:** fence it with triple backticks and a language for highlighting:
   <pre>```python
   print("hi")
@@ -143,6 +152,23 @@ menu, add a line to the `nav` list:
 
 Then create `talks.html` (copy any existing page like `links.html` as a starting
 point). Your social links and footer text live in the same `SITE` object.
+
+---
+
+## Social media icons (dark / light)
+
+The social buttons on the home page swap their icon with the theme. Each needs
+two image files with the **same name** in two folders:
+
+```
+assets/img/social/dark/<name>.png    ← used in dark mode
+assets/img/social/light/<name>.png   ← used in light mode
+```
+
+The `<name>` matches the `data-icon="…"` on each button in `index.html`. The
+current names are: `email, blsk, x, github, orcid, scholar, researchgate,
+scopus`. Drop both versions in and they switch automatically — no code changes.
+If a file is missing, the button falls back to a short text label.
 
 ---
 

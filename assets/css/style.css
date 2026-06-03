@@ -112,10 +112,15 @@ code, kbd { font-family: var(--font-mono); font-size: 0.92em; }
   max-width: var(--maxw); margin: 0 auto; padding: 12px 22px;
 }
 .site-nav__brand {
-  font-family: var(--font-mono); font-weight: 700; font-size: 1rem;
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-sans); font-weight: 400; font-size: 1.08rem;
   color: var(--text); white-space: nowrap;
 }
-.site-nav__brand .dot { color: var(--accent); }
+.site-nav__logo { height: 34px; width: auto; display: block; }
+.site-nav__brandtext strong { font-weight: 700; }            /* WANG = bold */
+.site-nav__brandtext .brand-phd {                            /* , Ph.D. = grey italic */
+  color: var(--text-dim); font-style: italic; font-weight: 400;
+}
 .site-nav__links { display: flex; gap: 4px; margin-left: auto; align-items: center; flex-wrap: wrap; }
 .site-nav__links a {
   color: var(--text-dim); padding: 7px 11px; border-radius: var(--radius-sm);
@@ -188,7 +193,9 @@ main { padding: 46px 0 70px; min-height: 60vh; }
 
 /* ---- HOME / HERO -------------------------------------------------------- */
 .hero { display: grid; grid-template-columns: 1fr 260px; gap: 40px; align-items: start; }
-.hero__name { font-size: 2.6rem; margin: 0 0 6px; letter-spacing: -0.03em; }
+.hero__name { font-size: 2.6rem; margin: 0 0 6px; letter-spacing: -0.03em; font-weight: 400; }
+.hero__name strong { font-weight: 800; }                         /* WANG = bold */
+.hero__name .phd { color: var(--text-dim); font-style: italic; font-weight: 400; }  /* , Ph.D. = grey italic */
 .hero__alias { font-family: var(--font-mono); color: var(--accent); font-size: 1.05rem; }
 .hero__role { color: var(--text-dim); font-size: 1.1rem; margin: 14px 0; }
 .hero__photo {
@@ -203,6 +210,7 @@ main { padding: 46px 0 70px; min-height: 60vh; }
   font-size: 0.78rem; font-weight: 600;
 }
 .socials a:hover { color: var(--accent); border-color: var(--accent); }
+.social-icon { width: 20px; height: 20px; object-fit: contain; display: block; }
 
 /* simple two-column info table (news / posts on home) */
 .info-table { width: 100%; border-collapse: collapse; }

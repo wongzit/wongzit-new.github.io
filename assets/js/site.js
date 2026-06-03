@@ -6,36 +6,42 @@
    ========================================================================== */
 
 const SITE = {
-  // Shown at the top-left of every page (the "logo").
-  brand: "Zhe&nbsp;WANG<span class='dot'>.</span>",
+  // Logo image shown at the top-left of every page.
+  logo: "/assets/img/favicon.png",
+
+  // Brand text next to the logo. Shown on every page EXCEPT the home page
+  // (home shows the logo only). Edit the words / styling here.
+  brandText: 'Zhe <strong>WANG</strong><span class="brand-phd">, Ph.D.</span>',
 
   // ---- Navigation menu --------------------------------------------------
   // To add a page: add { label, href }.  The current page is highlighted
   // automatically. "children" turns an item into a dropdown.
+  // Paths start with "/" (root-relative) so links work everywhere, including
+  // from inside a blog post's own folder (e.g. /my-post/).
   nav: [
-    { label: "home",         href: "index.html" },
-    { label: "cv",           href: "cv.html" },
-    { label: "research",     href: "research.html" },
+    { label: "home",         href: "/" },
+    { label: "cv",           href: "/cv.html" },
+    { label: "research",     href: "/research.html" },
     {
-      label: "publications", href: "publications.html",
+      label: "publications", href: "/publications.html",
       children: [
-        { label: "original papers",    href: "publications.html" },
-        { label: "accounts & reviews", href: "reviews.html" },
-        { label: "cover pictures",     href: "covers.html" },
+        { label: "original papers",    href: "/publications.html" },
+        { label: "accounts & reviews", href: "/reviews.html" },
+        { label: "cover pictures",     href: "/covers.html" },
       ],
     },
     {
-      label: "programs", href: "programs.html",
+      label: "programs", href: "/programs.html",
       children: [
-        { label: "py.Aroma",   href: "programs.html#pyaroma" },
-        { label: "uv.Plotter", href: "programs.html#uvplotter" },
-        { label: "scripts",    href: "programs.html#scripts" },
-        { label: "mol.Viewer", href: "programs.html#molviewer" },
+        { label: "py.Aroma",   href: "/programs.html#pyaroma" },
+        { label: "uv.Plotter", href: "/programs.html#uvplotter" },
+        { label: "scripts",    href: "/programs.html#scripts" },
+        { label: "mol.Viewer", href: "/programs.html#molviewer" },
       ],
     },
-    { label: "teaching", href: "teaching.html" },
-    { label: "links",    href: "links.html" },
-    { label: "blog",     href: "blog.html" },
+    { label: "teaching", href: "/teaching.html" },
+    { label: "links",    href: "/links.html" },
+    { label: "blog",     href: "/blog.html" },
   ],
 
   // ---- Footer -----------------------------------------------------------
@@ -55,15 +61,35 @@ function toggleTheme() {
   document.documentElement.setAttribute("data-theme", next);
   localStorage.setItem("theme", next);
   document.querySelectorAll(".theme-toggle").forEach(b => b.textContent = next === "light" ? "🌙" : "☀");
+  refreshSocialIcons();
+}
+
+/* Point each social icon at the dark/ or light/ version for the current theme.
+   Looks for assets/img/social/<theme>/<data-icon>.png */
+function refreshSocialIcons() {
+  const theme = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+  document.querySelectorAll(".social-icon[data-icon]").forEach(img => {
+    img.src = `/assets/img/social/${theme}/${img.dataset.icon}.png`;
+  });
 }
 
 /* ---- Build the navbar -------------------------------------------------- */
 function buildNav() {
-  const here = location.pathname.split("/").pop() || "index.html";
+  // Identify the current page file. "" means the home page (served at "/").
+  const segs = location.pathname.split("/").filter(Boolean);
+  let here = segs[segs.length - 1] || "";
+  if (here === "index.html") here = segs[segs.length - 2] || "";
+  // A blog post lives in its own folder (/my-post/), so its slug won't match
+  // any nav file — that's fine, nothing is marked active.
+  const isHome = here === "";
   const isLight = document.documentElement.getAttribute("data-theme") === "light";
 
+  // Logo always; text only when NOT on the home page.
+  const brandInner = `<img class="site-nav__logo" src="${SITE.logo}" alt="Zhe WANG — home">` +
+    (isHome ? "" : `<span class="site-nav__brandtext">${SITE.brandText}</span>`);
+
   const linkHTML = SITE.nav.map(item => {
-    const active = item.href.split("#")[0] === here ? "active" : "";
+    const active = item.href.split("#")[0].replace(/^\//, "") === here ? "active" : "";
     if (item.children) {
       const sub = item.children.map(c => `<a href="${c.href}">${c.label}</a>`).join("");
       return `<div class="nav-drop">
@@ -78,7 +104,7 @@ function buildNav() {
   nav.className = "site-nav";
   nav.innerHTML = `
     <div class="site-nav__inner">
-      <a class="site-nav__brand" href="index.html">${SITE.brand}</a>
+      <a class="site-nav__brand" href="/">${brandInner}</a>
       <button class="nav-burger" aria-label="menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
       <div class="site-nav__links" id="navLinks">
         ${linkHTML}
@@ -103,4 +129,4 @@ function buildFooter() {
   (slot || document.body).append(footer);
 }
 
-document.addEventListener("DOMContentLoaded", () => { buildNav(); buildFooter(); });
+document.addEventListener("DOMContentLoaded", () => { buildNav(); buildFooter(); refreshSocialIcons(); });

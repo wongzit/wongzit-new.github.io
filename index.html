@@ -17,7 +17,7 @@
          ==================================================================== -->
     <section class="hero">
       <div>
-        <h1 class="hero__name">Zhe WANG, Ph.D.</h1>
+        <h1 class="hero__name">Zhe <strong>WANG</strong><span class="phd">, Ph.D.</span></h1>
         <div class="hero__alias">a.k.a. Zit WONG | 王哲 | 왕철</div>
         <p class="hero__role">
           Assistant Professor at
@@ -31,16 +31,30 @@
           your own introduction.
         </p>
 
-        <!-- SOCIAL LINKS — edit the href; the short label shows on the button. -->
+        <!-- SOCIAL LINKS ----------------------------------------------------
+             Each button shows an icon that automatically switches with the
+             theme. Provide two versions of every icon:
+                 assets/img/social/dark/<name>.png    (shown in DARK mode)
+                 assets/img/social/light/<name>.png   (shown in LIGHT mode)
+             <name> is the data-icon value below. If a file is missing, the
+             short text label after onerror is shown instead. -->
         <div class="socials">
-          <a href="mailto:wang.zhe.dr@gmail.com" title="Email">@</a>
-          <a href="https://bsky.app/profile/wangzhe.bsky.social" title="Bluesky">bsky</a>
-          <a href="https://twitter.com/oooooootetsu" title="X">X</a>
-          <a href="https://github.com/wongzit" title="GitHub">GH</a>
-          <a href="https://orcid.org/0000-0002-9996-586X" title="ORCID">iD</a>
-          <a href="https://scholar.google.com/citations?user=gzUh6CMAAAAJ" title="Google Scholar">GS</a>
-          <a href="https://www.researchgate.net/profile/Zhe-Wang-84/" title="ResearchGate">RG</a>
-          <a href="https://www.scopus.com/authid/detail.uri?authorId=57203902612" title="Scopus">Sc</a>
+          <a href="mailto:wang.zhe.dr@gmail.com" title="Email">
+            <img class="social-icon" data-icon="email" alt="Email" onerror="this.outerHTML='@'"></a>
+          <a href="https://bsky.app/profile/wangzhe.bsky.social" title="Bluesky">
+            <img class="social-icon" data-icon="blsk" alt="Bluesky" onerror="this.outerHTML='bsky'"></a>
+          <a href="https://twitter.com/oooooootetsu" title="X">
+            <img class="social-icon" data-icon="x" alt="X" onerror="this.outerHTML='X'"></a>
+          <a href="https://github.com/wongzit" title="GitHub">
+            <img class="social-icon" data-icon="github" alt="GitHub" onerror="this.outerHTML='GH'"></a>
+          <a href="https://orcid.org/0000-0002-9996-586X" title="ORCID">
+            <img class="social-icon" data-icon="orcid" alt="ORCID" onerror="this.outerHTML='iD'"></a>
+          <a href="https://scholar.google.com/citations?user=gzUh6CMAAAAJ" title="Google Scholar">
+            <img class="social-icon" data-icon="scholar" alt="Google Scholar" onerror="this.outerHTML='GS'"></a>
+          <a href="https://www.researchgate.net/profile/Zhe-Wang-84/" title="ResearchGate">
+            <img class="social-icon" data-icon="researchgate" alt="ResearchGate" onerror="this.outerHTML='RG'"></a>
+          <a href="https://www.scopus.com/authid/detail.uri?authorId=57203902612" title="Scopus">
+            <img class="social-icon" data-icon="scopus" alt="Scopus" onerror="this.outerHTML='Sc'"></a>
         </div>
       </div>
 
