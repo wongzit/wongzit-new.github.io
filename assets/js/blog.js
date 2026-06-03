@@ -5,7 +5,14 @@
    /your-slug/ (each post is a folder with an index.html). See GUIDE.md.
    ========================================================================== */
 
-const POSTS_INDEX = "/posts/posts.json";
+// Site base URL (set by site.js; fall back to deducing from this script).
+const BASE = window.SITE_BASE || (function () {
+  const re = /assets\/js\/blog\.js(?:\?.*)?$/;
+  const s = Array.from(document.getElementsByTagName("script")).find(x => re.test(x.src));
+  return s ? s.src.replace(re, "") : (location.origin + "/");
+})();
+
+const POSTS_INDEX = BASE + "posts/posts.json";
 
 // Friendly explanation shown when the blog can't read its files because the
 // page was opened directly from disk (file://) instead of over http.
@@ -26,7 +33,7 @@ const isFileProtocol = location.protocol === "file:";
 
 async function loadIndex() {
   const res = await fetch(POSTS_INDEX, { cache: "no-cache" });
-  if (!res.ok) throw new Error("Could not load /posts/posts.json");
+  if (!res.ok) throw new Error("Could not load posts/posts.json");
   const posts = await res.json();
   // newest first by date string (YYYY-MM-DD sorts correctly)
   return posts.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
@@ -65,7 +72,7 @@ async function renderBlogIndex() {
       return inTag && (!q || hay.includes(q));
     });
     listEl.innerHTML = shown.length ? shown.map(p => `
-      <a class="post-card" href="/${encodeURIComponent(p.slug)}/">
+      <a class="post-card" href="${BASE}${encodeURIComponent(p.slug)}/">
         <div class="post-card__meta">${fmtDate(p.date)}</div>
         <div class="post-card__title">${p.title}</div>
         <p class="post-card__summary">${p.summary || ""}</p>
@@ -114,7 +121,7 @@ async function renderPost() {
 
   let md;
   try {
-    const res = await fetch(`/posts/${slug}.md`, { cache: "no-cache" });
+    const res = await fetch(`${BASE}posts/${slug}.md`, { cache: "no-cache" });
     if (!res.ok) throw new Error();
     md = await res.text();
   } catch (e) {
@@ -128,7 +135,7 @@ async function renderPost() {
 
   document.title = (meta.title || slug) + " · Zhe WANG";
   headEl.innerHTML = `
-    <a href="/blog.html" class="mono faint">&larr; all posts</a>
+    <a href="${BASE}blog.html" class="mono faint">&larr; all posts</a>
     <h1>${meta.title || slug}</h1>
     <div class="post-meta">${fmtDate(meta.date)} ${meta.tags ? "· " + meta.tags.map(t=>`<span class="tag">${t}</span>`).join("") : ""}</div>`;
 
@@ -165,7 +172,7 @@ async function renderLatestPosts(targetId, n = 3) {
     el.innerHTML = posts.map(p => `
       <tr>
         <td>${fmtDate(p.date)}</td>
-        <td><a href="/${encodeURIComponent(p.slug)}/">${p.title}</a></td>
+        <td><a href="${BASE}${encodeURIComponent(p.slug)}/">${p.title}</a></td>
       </tr>`).join("");
   } catch (e) { el.innerHTML = `<tr><td colspan="2" class="muted">No posts yet.</td></tr>`; }
 }

@@ -49,6 +49,18 @@ const SITE = {
   footerLine: 'Zhe WANG, Ph.D. · Graduate School of Engineering, The University of Osaka.',
 };
 
+/* ---- Site base URL -----------------------------------------------------
+   Worked out from where this very script lives, so every link and data file
+   resolves correctly whether the site is published at the domain root
+   (https://wongzit.github.io/) or in a sub-folder
+   (https://wongzit.github.io/wongzit-new.github.io/). Nothing to configure. */
+window.SITE_BASE = (function () {
+  const re = /assets\/js\/site\.js(?:\?.*)?$/;
+  const s = Array.from(document.getElementsByTagName("script")).find(x => re.test(x.src));
+  return s ? s.src.replace(re, "") : (location.origin + "/");
+})();
+function siteUrl(p) { return window.SITE_BASE + String(p).replace(/^\//, ""); }
+
 /* ---- Theme (dark default, remembers your choice) ----------------------- */
 (function applyThemeEarly() {
   const saved = localStorage.getItem("theme");
@@ -69,42 +81,43 @@ function toggleTheme() {
 function refreshSocialIcons() {
   const theme = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
   document.querySelectorAll(".social-icon[data-icon]").forEach(img => {
-    img.src = `/assets/img/social/${theme}/${img.dataset.icon}.png`;
+    img.src = siteUrl(`assets/img/social/${theme}/${img.dataset.icon}.png`);
   });
 }
 
 /* ---- Build the navbar -------------------------------------------------- */
 function buildNav() {
-  // Identify the current page file. "" means the home page (served at "/").
-  const segs = location.pathname.split("/").filter(Boolean);
-  let here = segs[segs.length - 1] || "";
-  if (here === "index.html") here = segs[segs.length - 2] || "";
-  // A blog post lives in its own folder (/my-post/), so its slug won't match
-  // any nav file — that's fine, nothing is marked active.
-  const isHome = here === "";
+  // Current page path relative to the site base (handles sub-folder hosting).
+  const basePath = new URL(window.SITE_BASE).pathname;          // "/" or "/repo/"
+  let rel = location.pathname;
+  if (rel.startsWith(basePath)) rel = rel.slice(basePath.length);
+  rel = rel.replace(/index\.html$/, "");                        // "/index.html" => home
+  // rel is now like "", "cv.html", "blog.html", or "my-post/".
+  const isHome = rel === "";
   const isLight = document.documentElement.getAttribute("data-theme") === "light";
 
   // Logo always; text only when NOT on the home page.
-  const brandInner = `<img class="site-nav__logo" src="${SITE.logo}" alt="Zhe WANG — home">` +
+  const brandInner = `<img class="site-nav__logo" src="${siteUrl(SITE.logo)}" alt="Zhe WANG — home">` +
     (isHome ? "" : `<span class="site-nav__brandtext">${SITE.brandText}</span>`);
 
   const linkHTML = SITE.nav.map(item => {
-    const active = item.href.split("#")[0].replace(/^\//, "") === here ? "active" : "";
+    const navRel = item.href.split("#")[0].replace(/^\//, "");
+    const active = navRel === rel ? "active" : "";
     if (item.children) {
-      const sub = item.children.map(c => `<a href="${c.href}">${c.label}</a>`).join("");
+      const sub = item.children.map(c => `<a href="${siteUrl(c.href)}">${c.label}</a>`).join("");
       return `<div class="nav-drop">
-                <a href="${item.href}" class="${active}">${item.label} ▾</a>
+                <a href="${siteUrl(item.href)}" class="${active}">${item.label} ▾</a>
                 <div class="nav-drop__menu">${sub}</div>
               </div>`;
     }
-    return `<a href="${item.href}" class="${active}">${item.label}</a>`;
+    return `<a href="${siteUrl(item.href)}" class="${active}">${item.label}</a>`;
   }).join("");
 
   const nav = document.createElement("nav");
   nav.className = "site-nav";
   nav.innerHTML = `
     <div class="site-nav__inner">
-      <a class="site-nav__brand" href="/">${brandInner}</a>
+      <a class="site-nav__brand" href="${window.SITE_BASE}">${brandInner}</a>
       <button class="nav-burger" aria-label="menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
       <div class="site-nav__links" id="navLinks">
         ${linkHTML}
