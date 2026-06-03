@@ -149,6 +149,18 @@ async function renderPost() {
   });
   bodyEl.innerHTML = marked.parse(md);
 
+  // Make in-post asset/links portable: any path written with a leading "/"
+  // (e.g. /assets/img/fig.png) is re-pointed at the site base, so posts work
+  // whether the site is hosted at the root or in a sub-folder. Absolute URLs
+  // (http://, https://, //, data:) and #anchors are left untouched.
+  const rebase = v => (!v || /^([a-z]+:)?\/\//i.test(v) || /^(data:|#|mailto:)/i.test(v))
+    ? v : BASE + v.replace(/^\//, "");
+  bodyEl.querySelectorAll("img[src]").forEach(el => el.setAttribute("src", rebase(el.getAttribute("src"))));
+  bodyEl.querySelectorAll("a[href]").forEach(el => {
+    const h = el.getAttribute("href");
+    if (h && h.startsWith("/")) el.setAttribute("href", rebase(h));   // only root-relative links
+  });
+
   // Math (KaTeX) — supports $inline$ and $$display$$.
   if (window.renderMathInElement) {
     renderMathInElement(bodyEl, {

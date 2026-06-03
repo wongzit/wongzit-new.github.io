@@ -5,6 +5,25 @@ file and push it to GitHub; GitHub Pages serves it as-is.
 
 ---
 
+## Moving from the test repo to your main site
+
+You can develop in `wongzit-new.github.io` (URLs look like
+`wongzit.github.io/wongzit-new.github.io/…`) and, when ready, copy **all** the
+files into your `wongzit.github.io` repo. **No code changes are needed** — the
+site detects whether it's running in a sub-folder or at the root and fixes every
+link, blog URL, image and data path automatically. Once at the root, your posts
+are back at `wongzit.github.io/<slug>/`, matching your old links.
+
+Two small rules when YOU add content so it stays portable:
+
+- In **blog posts** (Markdown), write internal paths with a leading slash, e.g.
+  `/assets/img/figure.png` or `/cv.html`. The engine re-points them correctly.
+- In the **static pages** (`.html` files), use relative paths *without* a
+  leading slash, e.g. `assets/img/x.png` or `cv.html` (the placeholders already
+  do this — just follow the existing style).
+
+---
+
 ## The 30-second mental model
 
 | What you want to change            | File to edit                          |
@@ -112,7 +131,9 @@ Add a new object to the list. The pages group entries by year automatically
   "year": 2026,
   "title": "Your paper title",
   "authors": "A. Author, <span class=\"me\">Zhe Wang</span>, C. Coauthor<sup>*</sup>",
-  "venue": "<i>J. Am. Chem. Soc.</i>, <b>2026</b>, 148, 20974–20984.",
+  "venue": "<i>J. Am. Chem. Soc.</i>, <b>2026</b>, <i>148</i>, 20974–20984.",
+  // In "venue": <i>…</i> = italic (journal & volume), <b>…</b> = bold year,
+  // plain text (e.g. page numbers) stays upright.
   "image": "assets/img/pubs/my-toc.png",   // TOC graphic, shown on the left
   "doi": "10.1021/jacs.xxxxx",             // optional: enables Altmetric + citation badges
   "links": {

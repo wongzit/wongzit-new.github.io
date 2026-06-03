@@ -7,6 +7,23 @@
    You normally never need to touch anything else in this file.
    ========================================================================== */
 
+/* ---- CURSOR GLOW (light-green dot that trails the mouse) ----------------- */
+#cursor-dot, #cursor-glow {
+  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
+  border-radius: 50%; transform: translate(-50%, -50%);
+  opacity: 0; transition: opacity .35s ease; will-change: transform;
+}
+#cursor-dot {                                   /* small, follows closely */
+  width: 8px; height: 8px; background: var(--accent);
+  box-shadow: 0 0 10px var(--accent), 0 0 4px var(--accent);
+}
+#cursor-glow {                                  /* big soft halo, lags behind */
+  width: 38px; height: 38px;
+  background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+}
+@media (pointer: coarse) { #cursor-dot, #cursor-glow { display: none; } }
+@media (prefers-reduced-motion: reduce) { #cursor-dot, #cursor-glow { display: none; } }
+
 /* ---- THEME TOKENS (edit these to recolor the whole site) ---------------- */
 :root {
   --accent:        #38e1c4;   /* primary accent (teal) */
@@ -260,8 +277,9 @@ main { padding: 46px 0 70px; min-height: 60vh; }
 .pub__authors { color: var(--text-dim); font-size: 0.98rem; margin: 0 0 5px; }
 .pub__authors .me { color: var(--text); font-weight: 600; border-bottom: 2px solid var(--accent); }
 .pub__authors sup { color: var(--accent); }
-.pub__venue { color: var(--text-faint); font-size: 0.95rem; font-style: italic; margin: 0 0 12px; }
-.pub__venue b { color: var(--text-dim); font-style: normal; }
+.pub__venue { color: var(--text-faint); font-size: 0.95rem; font-style: normal; margin: 0 0 12px; }
+.pub__venue i { font-style: italic; }                            /* journal + volume (wrap in <i>) */
+.pub__venue b { color: var(--text-dim); font-style: normal; }    /* year (wrap in <b>) */
 
 /* action buttons (DOI / ABS / BIB / PDF …) */
 .pub__btns { display: flex; flex-wrap: wrap; gap: 8px; }

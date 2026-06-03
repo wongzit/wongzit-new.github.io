@@ -72,7 +72,7 @@ function toggleTheme() {
   const next = cur === "light" ? "dark" : "light";
   document.documentElement.setAttribute("data-theme", next);
   localStorage.setItem("theme", next);
-  document.querySelectorAll(".theme-toggle").forEach(b => b.textContent = next === "light" ? "🌙" : "☀");
+  document.querySelectorAll(".theme-toggle").forEach(b => b.textContent = next === "light" ? "🌙" : "☀️");
   refreshSocialIcons();
 }
 
@@ -142,4 +142,38 @@ function buildFooter() {
   (slot || document.body).append(footer);
 }
 
-document.addEventListener("DOMContentLoaded", () => { buildNav(); buildFooter(); refreshSocialIcons(); });
+/* ---- Cursor glow ------------------------------------------------------- */
+/* A small accent dot plus a softer halo that trails the mouse. Skipped on
+   touch screens and when the visitor prefers reduced motion (see CSS). */
+function initCursorGlow() {
+  const coarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (coarse || reduce) return;
+
+  const dot = document.createElement("div");  dot.id = "cursor-dot";
+  const glow = document.createElement("div"); glow.id = "cursor-glow";
+  document.body.append(dot, glow);
+
+  let mx = 0, my = 0;          // target (mouse)
+  let dx = 0, dy = 0;          // dot position
+  let gx = 0, gy = 0;          // glow position
+  document.addEventListener("mousemove", e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.opacity = 1; glow.style.opacity = 1;
+  });
+  document.addEventListener("mouseleave", () => { dot.style.opacity = 0; glow.style.opacity = 0; });
+
+  (function loop() {
+    dx += (mx - dx) * 0.35;   // dot reacts fast
+    dy += (my - dy) * 0.35;
+    gx += (mx - gx) * 0.12;   // halo lags for a comet-like trail
+    gy += (my - gy) * 0.12;
+    dot.style.transform  = `translate(${dx}px, ${dy}px) translate(-50%, -50%)`;
+    glow.style.transform = `translate(${gx}px, ${gy}px) translate(-50%, -50%)`;
+    requestAnimationFrame(loop);
+  })();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  buildNav(); buildFooter(); refreshSocialIcons(); initCursorGlow();
+});
