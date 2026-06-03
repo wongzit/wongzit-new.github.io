@@ -121,7 +121,7 @@ function buildNav() {
       <button class="nav-burger" aria-label="menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
       <div class="site-nav__links" id="navLinks">
         ${linkHTML}
-        <button class="theme-toggle" aria-label="toggle theme" onclick="toggleTheme()">${isLight ? "🌙" : "☀"}</button>
+        <button class="theme-toggle" aria-label="toggle theme" onclick="toggleTheme()">${isLight ? "🌙" : "☀️"}</button>
       </div>
     </div>`;
   const slot = document.getElementById("site-header");
