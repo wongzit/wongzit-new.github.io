@@ -28,8 +28,9 @@ Run all generated `.gjf` files in **Gaussian**.
 Finally, visualize *denNICS.cube* alongside the total electron density. This combined mapping allows for a clearer, more detailed picture of how aromaticity correlates with the underlying electron density distribution.
 
 Following is an example for a phenanthrene trimer (ref.: [10.1039/d1sc03368a](https://doi.org/10.1039/d1sc03368a)).
+
 <p align="center">
-<img alt="reorganization" src="/assets/blog/dennics.png" style="height:366px;">
+<img alt="reorganization" src="/assets/blog/dennics.png" style="width:90%;">
 </p>
 
 This procedure offers a practical way to investigate the aromaticity of complex molecules by integrating NICS values onto an electrostatic potential surface. By following the steps outlined, researchers can gain deeper insight into the interplay between aromaticity and electron density in three-dimensional space.
