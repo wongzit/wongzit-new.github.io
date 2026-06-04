@@ -79,15 +79,15 @@ Benzene//NMR
 Open the output file with *GaussView*, go to "Results -> NMR", choose "H" from "element", we could get the 
 magnetic shielding tensors σ (in ppm).
 
-<div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure101.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure101" src="/assets/blog/figure101.png" style="width:90%;">
+</p>
 
 You could also use "Reference" like TMS, to get the chemical shift δ, to compare with experimental data.
 
-<div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure102.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure102" src="/assets/blog/figure102.png" style="width:90%;">
+</p>
 
 In this demo calculation, the computed shielding tensors *σ* for all protons are **24.0925**, **24.0931** and **24.1077** ppm, the 
 chemical shift *δ* are **7.7896**, **7.7890** and **7.7744**. The experimental chemica shift of benzene in *d*-chloroform is **7.36**.
@@ -124,9 +124,9 @@ at `/Applications/gv/data/nmr.data`.
 2. Add the references at the end of file, for example:  **H    32.3685  "TMS wB97XD/6-31+G(d,p) GIAO"**
 3. Re-open *GaussView*, you could find the new reference in NMR window.
 
-<div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure103.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure103" src="/assets/blog/figure103.png" style="width:90%;">
+</p>
 
 # 5. Apply scaling factor with py.NMR
 
@@ -134,8 +134,8 @@ at `/Applications/gv/data/nmr.data`.
 
 py.**NMR** is a Python program for applying scaling factors to computed shielding tensors. The latest version of py.**NMR** could be freely download from [GitHub](https://github.com/wongzit/pyNMR).
 
-<p align = "center">
-<img alt="pynmr" class="icon" src="/assets/program/pyNMR_icon.png" style="height:106px; background-color:transparent;">
+<p align="center">
+<img alt="figure103" src="/assets/blog/pyNMR_icon.png" style="height:106px;">
 </p>
 
 In py.**NMR**, *Lorentzian function* for line broadening will be applied to the scaled chemical shift, and the sprctrum 
@@ -145,6 +145,6 @@ $$ L(x) = \frac {FWHM}{2 \pi} \frac {1}{(x-x_i)^2 + 0.25 \times FWHM^2} $$
 
 Users can plot the scaled NMR spectrum with the data points in Excel file. More detail about usage of py.**NMR**, please refer to the user manual on [GitHub](https://github.com/wongzit/pyNMR).
 
-<div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure111.jpg" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure111" src="/assets/blog/figure111.png" style="width:90%;">
+</p>
