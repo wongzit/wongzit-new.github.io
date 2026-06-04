@@ -76,7 +76,7 @@ In the above equetion, *0.41548* represents the contribution of basis χ<sub>3</
 
 Thus,
 
-$$ \langle \Psi _5 | \Psi _5 \rangle = 0.67283 + 0.65238 \times S_{3,7} - 0.04569 \times S_{3,14} - 0.03587 \times S_{7,14} $$
+$$ \langle \Psi _5 \textbar \Psi _5 \rangle = 0.67283 + 0.65238 \times S_{3,7} - 0.04569 \times S_{3,14} - 0.03587 \times S_{7,14} $$
 
 To calculate the contribution of each basis function, we need overlap integral <i>S</i><sub>3,7</sub>, <i>S</i><sub>3,14</sub>, and <i>S</i><sub>7,14</sub>. These overlap integral can be obtained using `iop(3/33=1)` keyword and aresummarized in the **Overlap** section:
 
@@ -188,10 +188,8 @@ NATURAL POPULATIONS:  Natural atomic orbital occupancies
     13    O    1  dyz    Ryd( 3d)     0.00205       2.53155
     14    O    1  dx2y2  Ryd( 3d)     0.00069       2.13328
     15    O    1  dz2    Ryd( 3d)     0.00267       1.73849
-
     16    H    2  S      Val( 1S)     0.53264       0.14162
     17    H    2  S      Ryd( 2S)     0.00169       0.57225
-
     18    H    3  S      Val( 1S)     0.53264       0.14162
     19    H    3  S      Ryd( 2S)     0.00169       0.57225
 ```
