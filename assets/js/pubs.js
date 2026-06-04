@@ -96,6 +96,54 @@ function openPubLightbox(src, alt) {
   lb.classList.add("open");
 }
 
+/* ---------- COVER PICTURES (slideshow gallery) -------------------------- */
+function renderCovers() {
+  const listEl = document.getElementById("pub-list");
+  let all;
+  try { all = loadPubs(); }
+  catch (e) { listEl.innerHTML = `<p class="muted">${e.message}</p>`; return; }
+
+  const items = all.filter(p => (p.type || "") === "cover").sort((a, b) => b.year - a.year);
+  if (!items.length) { listEl.innerHTML = `<p class="muted">No cover pictures yet.</p>`; return; }
+
+  const slides = items.map(p => `
+    <figure class="cover-slide">
+      <img class="cover-img" src="${p.image || ""}" alt="${(p.title || "").replace(/"/g, "")}"
+           onerror="this.style.opacity=.3">
+      <figcaption class="cover-cap">${p.caption || p.venue || ""}</figcaption>
+    </figure>`).join("");
+  const dots = items.map((_, k) => `<button class="cover-dot" data-k="${k}" aria-label="cover ${k + 1}"></button>`).join("");
+
+  listEl.innerHTML = `
+    <div class="cover-carousel">
+      <button class="cover-arrow cover-prev" aria-label="Previous cover">&lsaquo;</button>
+      <div class="cover-viewport"><div class="cover-track">${slides}</div></div>
+      <button class="cover-arrow cover-next" aria-label="Next cover">&rsaquo;</button>
+    </div>
+    <div class="cover-dots">${dots}</div>`;
+
+  const track = listEl.querySelector(".cover-track");
+  const dotEls = Array.from(listEl.querySelectorAll(".cover-dot"));
+  let i = 0;
+  function go(n) {
+    i = (n + items.length) % items.length;
+    track.style.transform = `translateX(-${i * 100}%)`;
+    dotEls.forEach((d, k) => d.classList.toggle("active", k === i));
+  }
+  listEl.querySelector(".cover-prev").addEventListener("click", () => go(i - 1));
+  listEl.querySelector(".cover-next").addEventListener("click", () => go(i + 1));
+  dotEls.forEach(d => d.addEventListener("click", () => go(+d.dataset.k)));
+  document.addEventListener("keydown", e => {
+    if (e.key === "ArrowLeft") go(i - 1);
+    if (e.key === "ArrowRight") go(i + 1);
+  });
+  listEl.addEventListener("click", e => {                 // click cover to zoom
+    const img = e.target.closest(".cover-img");
+    if (img) openPubLightbox(img.src, img.alt);
+  });
+  go(0);
+}
+
 // `type` may be a single type ("paper"), several (["paper","review"]),
 // or "all" to show everything.
 function renderPublications(type) {

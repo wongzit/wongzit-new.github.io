@@ -160,6 +160,29 @@ Notes:
   supply a real `doi`. Leave `doi` empty (`""`) to hide them.
 - Same comma rule as the blog: comma after every entry **except the last**.
 
+### Cover pictures (`"type": "cover"`)
+
+The covers page is a slideshow, not a detail list, so a cover entry only needs a
+few fields — the image and a one-line caption:
+
+```json
+{
+  "type": "cover",
+  "year": 2026,
+  "title": "Journal cover — short description",
+  "caption": "<i>J. Am. Chem. Soc.</i>, p. 20974",
+  "image": "assets/img/covers/jacs-2026.png"
+}
+```
+
+- Put the cover artwork in `assets/img/covers/` and point `image` to it
+  (portrait images look best).
+- **`caption`** is the line shown under the cover — typically the journal name
+  (in `<i>…</i>`) and page number. If you omit `caption`, the `venue` line is
+  used instead.
+- Covers are sorted newest-first; visitors slide between them with the arrows,
+  dots, or ← → keys, and click a cover to enlarge it.
+
 ---
 
 ## Changing the menu or your name

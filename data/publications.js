@@ -10,6 +10,27 @@
 
 window.PUBLICATIONS = [
   {
+    "type": "cover",
+    "year": 2023,
+    "title": "Energetically More Stable Singlet Cyclopentane-1,3-diyl Diradical with π-Single Bonding Character than the Corresponding σ-Single Bonded Compound",
+    "caption": "<i>J. Am. Chem. Soc.</i>, <b>2023</b>, <i>145</i>, 27089–27094.",
+    "image": "assets/img/covers/jacs-2023.png"
+  },
+  {
+    "type": "cover",
+    "year": 2021,
+    "title": "SOMO–HOMO Conversion in Triplet Carbenes",
+    "caption": "<i>Org. Lett.</i>, <b>2021</b>, <i>23</i>, 4955–4959.",
+    "image": "assets/img/covers/ol-2021.png"
+  },
+  {
+    "type": "cover",
+    "year": 2021,
+    "title": "1,3-Diradicals Embedded in Curved Paraphenylene Units: Singlet versus Triplet State and In-Plane Aromaticity",
+    "caption": "<i>J. Am. Chem. Soc.</i>, <b>2021</b>, <i>143</i>, 7426–7439.",
+    "image": "assets/img/covers/jacs-2021.png"
+  },
+  {
     "type": "paper",
     "year": 2026,
     "title": "A Persistent Ni(0)–Pentalene Complex with High Fluxionality: Does Stronger Antiaromaticity Promote Metal–Ligand Interactions?",
