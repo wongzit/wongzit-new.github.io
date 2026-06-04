@@ -7,6 +7,13 @@
     "summary": "A short guide on orbital composition analysis."
   },
   {
+    "slug": "a-new-3d-nics-method-based-on-esp-mapping",
+    "title": "A New 3D NICS Method Based on ESP Mapping",
+    "date": "2025-01-21",
+    "tags": ["aromaticity"],
+    "summary": "An approach for aromaticity analyses of 3D molecules."
+  },
+  {
     "slug": "gaussian-calculation-task-continuation",
     "title": "Gaussian 16 Calculation Task Continuation",
     "date": "2024-02-13",
