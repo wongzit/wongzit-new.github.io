@@ -21,11 +21,31 @@
     "summary": "Continue your Gaussian job when unexpected termination."
   },
   {
+    "slug": "pyaroma-version-4-update",
+    "title": "py.Aroma Version 4 Update",
+    "date": "2023-12-29",
+    "tags": ["aromaticity", "program"],
+    "summary": "py.Aroma 4 released."
+  },
+  {
+    "slug": "analyze-intermolecular-interactions-by-sapt",
+    "title": "Analyze Intermolecular Interactions by SAPT",
+    "date": "2023-11-09",
+    "tags": ["program"],
+    "summary": "EDA calcuations using Psi4"
+  },
+  {
     "slug": "computing-charge-transfer-rate-based-on-marcus-theory-using-gaussian",
     "title": "Computing Charge Transfer Rate Based on Marcus Theory Using Gaussian",
     "date": "2023-09-30",
-    "tags": ["Gaussian", "ADF"],
+    "tags": ["Gaussian"],
     "summary": "A quick guide to compute charge transfer rate."
+  },
+  {
+    "slug": "hartree-fock-exchange-of-dft-functionals",
+    "title": "Hartree-Fock Exchange of DFT Functionals",
+    "date": "2023-08-01",
+    "tags": ["misc"]
   },
   {
     "slug": "gaussian-common-errors-and-solutions",
