@@ -4,33 +4,33 @@ Source of this blog: [ResearchGate](https://www.researchgate.net/post/What-is-th
 
 **2. Generate .cube files of HOMO and LUMO (for unrestricted calculation, alpha and beta are separated).**
 
-<div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure71.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure71" src="/assets/blog/figure71.png" style="width:80%;">
+</p>
 
 **3. Generate combined HOMO and LUMO by adding two cubes of alpha and beta orbitals.**
 
-<div class="col-sm-7 mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure72.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure72" src="/assets/blog/figure72.png" style="width:80%;">
+</p>
 
 **4. Square the new generated HOMO and LUMO cubes.**
 
-<div class="col-sm-7 mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure73.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure73" src="/assets/blog/figure73.png" style="width:80%;">
+</p>
 
 **5. Add two squared cubes.**
 
-<div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure74.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure74" src="/assets/blog/figure74.png" style="width:80%;">
+</p>
 
 **6. Plot.**
 
-<div class="col-sm-7 mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure75.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure75" src="/assets/blog/figure75.png" style="width:80%;">
+</p>
 
 > Input file of this calculation:
 
