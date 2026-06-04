@@ -1,6 +1,6 @@
-<div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure31.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure31" src="/assets/blog/figure31.png" style="width:90%;">
+</p>
 
 EnePro is released on [*GitHub repo*](https://github.com/wongzit/EnePro)! With EnePro, users can easily draw energy profile with a simple Excel input.
 
