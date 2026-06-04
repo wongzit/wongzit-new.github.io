@@ -139,7 +139,7 @@ Molecular view in AICD plots, *n* = 1-4. (1: single view, surface only; 2: singl
 Direction of external magnetic field (default is 0 0 1), the external magnetic field is defined in vector space with *x*, *y*, *z* direction. The external is only defined in direction, the magnitude is out of consideration (e.g.: 0 0 1 is same as 0 0 2).
 
 <p align="center">
-<img alt="figure83" src="/assets/blog/figure83.png" style="width:100%;">
+<img alt="figure83" src="/assets/blog/figure83.png" style="width:50%;">
 </p>
 
 ### `-l r`
@@ -147,7 +147,7 @@ Direction of external magnetic field (default is 0 0 1), the external magnetic f
 Iso-surface value.
 
 <p align="center">
-<img alt="figure84" src="/assets/blog/figure84.png" style="width:100%;">
+<img alt="figure84" src="/assets/blog/figure84.png" style="width:90%;">
 </p>
 
 ### `-p n`
@@ -155,7 +155,7 @@ Iso-surface value.
 Number of data points, default is 40000, larger *n* value will generate more arrows and smoother iso-surface. More computational cost is needed.
 
 <p align="center">
-<img alt="figure85" src="/assets/blog/figure85.png" style="width:100%;">
+<img alt="figure85" src="/assets/blog/figure85.png" style="width:90%;">
 </p>
 
 ### `--maxarrowlength f`
@@ -163,7 +163,7 @@ Number of data points, default is 40000, larger *n* value will generate more arr
 Define the maximum of arrow length, the arrows longer than value *f* would not be displayed in AICD map (similar option: `--minarrowlength`)
 
 <p align="center">
-<img alt="figure86" src="/assets/blog/figure86.png" style="width:100%;">
+<img alt="figure86" src="/assets/blog/figure86.png" style="width:90%;">
 </p>
 
 ### `-s`
@@ -171,7 +171,7 @@ Define the maximum of arrow length, the arrows longer than value *f* would not b
 Smoothly graphical representation, needs more computational cost.
 
 <p align="center">
-<img alt="figure87" src="/assets/blog/figure87.png" style="width:100%;">
+<img alt="figure87" src="/assets/blog/figure87.png" style="width:90%;">
 </p>
 
 More options can be found from `AICD -h` command. After AICD calculation, several files would be generated and we need the files in the folder named as “*xxxxxxxxxxxxxx.d*”. Copy this folder to a computer with POV-Ray installed.
@@ -187,7 +187,7 @@ Here are some common issues when using the POV-Ray:
 The following figure shows how the POV-Ray renders an image:
 
 <p align="center">
-<img alt="figure88" src="/assets/blog/figure88.png" style="width:100%;">
+<img alt="figure88" src="/assets/blog/figure88.png" style="width:50%;">
 </p>
 
 If the molecule is not displayed in full, please modify the `camera - location` coordinate <*x*, *y*, *z*> in the “*RenderMich.pov*” file. More negative *z* value will give smaller size molecule. 
