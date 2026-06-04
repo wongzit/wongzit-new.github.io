@@ -55,7 +55,7 @@ To calculate the charge transfer integral for the LUMO, the orbital types must b
 calc_J -p_1 1mer_1.pun -orb_ty_1 LUMO -p_2 1mer_2.pun -orb_ty_2 LUMO -p_P 2mer.pun
 ```
 
-The effective (or generalized) charge transfer integral *J_eff* (also known as electronic coupling ***V***) would be shown on the screen:
+The effective (or generalized) charge transfer integral $ J_{\rm {eff}} $ (also known as electronic coupling ***V***) would be shown on the screen:
 
 ```
 J_eff -0.00190564 eV
@@ -63,18 +63,18 @@ J_eff -0.00190564 eV
 
 ## 4 Charge Transfer Rate Constant Based on Marcus Theory
 
-By Marcus theory, the rate constant of charge transfer *k_et* could be computed from electronic coupling ***V*** (*J_eff*) and reorganization energy λ:
+By Marcus theory, the rate constant of charge transfer $ k_{\rm {et}} $ could be computed from electronic coupling ***V*** ($ J_{\rm {eff}} $) and reorganization energy λ:
 
 $$ k_{\rm et} = \sqrt { \frac {\pi}{\lambda k_{\rm B}T}} \frac{V^2}{\hbar} \exp {\left( - \frac {\lambda}{4k_{\rm B}T} \right)} $$
 
-where, reduced Planck constant ħ, Boltzmann constant *k_B*, temperature T are also needed.
+where, reduced Planck constant ħ, Boltzmann constant $ k_{\rm {B}} $, temperature *T* are also needed.
 
 The reorganization energy λ is defined as the energy difference between the charged and neutral systems at the two different geometries (adiabatic potential energy surface). To compute it, four separated calculations are needed, *e.g.* for eletron transfer:
 
-- Geometry optimizaiton of neutral state (E_1)
-- Single point calculation of anion state with neutral geometry (E_4)
-- Geometry optimizaiton of anion state (E_3)
-- Single point calculation of neutral state with anion geometry (E_2)
+- Geometry optimizaiton of neutral state ($ E_1 $)
+- Single point calculation of anion state with neutral geometry ($ E_4 $)
+- Geometry optimizaiton of anion state ($ E_3 $)
+- Single point calculation of neutral state with anion geometry ($ E_2 $)
 
 and the reorganization energy is:
 
@@ -88,7 +88,7 @@ $$ \lambda_2 = E_4 - E_3 $$
 <img alt="reorganization" src="/assets/blog/re_en.png" style="height:366px;">
 </p>
 
-Here I provided an Excel tool for computing the λ and *k_et* based on Marcus theory, download from [here](https://wongzit.github.io/assets/blog/marcus_theory_zwang_20230929.xlsx).
+Here I provided an Excel tool for computing the λ and $ k_{\rm {et}} $ based on Marcus theory, download from [here](https://wongzit.github.io/assets/blog/marcus_theory_zwang_20230929.xlsx).
 
 ## 5 Example
 
@@ -226,7 +226,7 @@ S_ab  0.00943935
 J_eff -0.0368193 eV
 ```
 
-For comparsion, the J_eff calculated at same level of theory by ADF was -0.03780 eV.
+For comparsion, the $ J_{\rm {eff}} $ calculated at same level of theory by ADF was -0.03780 eV.
 
 FYI:
 
@@ -240,5 +240,5 @@ $$ 1 \, {\rm eV} = 1.60218 \times 10 ^ {-19} \, {\rm J} $$
 
 $$ 1 \, {\rm J} = 6.24151 \times 10 ^ {18} \, {\rm eV} $$
 
-The reorganization energy λ was computed to 0.23 eV, thus, the $ k_{\rm {et}}$ for electrons is 4.85E+12 / s at 300 K.
+The reorganization energy λ was computed to 0.23 eV, thus, the $ k_{\rm {et}} $ for electrons is $ 4.85 \times 10^{12} $ / s at 300 K.
 
