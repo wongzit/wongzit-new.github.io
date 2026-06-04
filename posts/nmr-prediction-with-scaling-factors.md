@@ -125,7 +125,7 @@ at `/Applications/gv/data/nmr.data`.
 3. Re-open *GaussView*, you could find the new reference in NMR window.
 
 <p align="center">
-<img alt="figure103" src="/assets/blog/figure103.png">
+<img alt="figure103" src="/assets/blog/figure103.png" style="width:70%;">
 </p>
 
 # 5. Apply scaling factor with py.NMR
