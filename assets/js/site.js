@@ -34,10 +34,10 @@ const SITE = {
     {
       label: "programs", href: "/programs.html",
       children: [
-        { label: "py.Aroma",   href: "/programs.html#pyaroma" },
+        { label: "py.Aroma",   href: "/program/pyaroma" },
         { label: "uv.Plotter", href: "/programs.html#uvplotter" },
         { label: "scripts",    href: "/programs.html#scripts" },
-        { label: "mol.Viewer", href: "/programs.html#molviewer" },
+        { label: "mol.Viewer", href: "/program/online/molview.html" },
       ],
     },
     { label: "teaching", href: "/teaching.html" },
