@@ -1,11 +1,3 @@
----
-layout: post
-title:  "Hartree-Fock Exchange of DFT Functionals"
-date:   2023-08-01 16:46:56 +0900
-tags: [Computation]
-author: Zhe Wang
----
-
 # Global Hybrid Functionals
 
 |Functional|HF Exchange / %|
