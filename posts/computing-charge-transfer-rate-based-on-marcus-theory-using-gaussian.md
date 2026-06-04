@@ -240,5 +240,5 @@ $$ 1 \, {\rm eV} = 1.60218 \times 10 ^ {-19} \, {\rm J} $$
 
 $$ 1 \, {\rm J} = 6.24151 \times 10 ^ {18} \, {\rm eV} $$
 
-The reorganization energy λ was computed to 0.23 eV, thus, the *k_et* for electrons is 4.85E+12 / s at 300 K.
+The reorganization energy λ was computed to 0.23 eV, thus, the $ k_{\rm {et}}$ for electrons is 4.85E+12 / s at 300 K.
 
