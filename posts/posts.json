@@ -3,8 +3,15 @@
     "slug": "orbital-composition-analysis",
     "title": "Orbital Composition Analysis",
     "date": "2025-06-03",
-    "tags": ["chemistry", "tutorial"],
-    "summary": "A short walkthrough of how to break down molecular orbitals into atomic contributions, with example output and a formula or two."
+    "tags": ["Gaussian", "tutorial"],
+    "summary": "A short guide on orbital composition analysis."
+  },
+  {
+    "slug": "gaussian-calculation-task-continuation",
+    "title": "Gaussian 16 Calculation Task Continuation",
+    "date": "2024-02-13",
+    "tags": ["Gaussian", "tutorial"],
+    "summary": "Continue your Gaussian job when unexpected termination."
   },
   {
     "slug": "computing-charge-transfer-rate-based-on-marcus-theory-using-gaussian",
