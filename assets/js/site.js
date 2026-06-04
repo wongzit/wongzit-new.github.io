@@ -47,7 +47,7 @@ const SITE = {
 
   // ---- Footer -----------------------------------------------------------
   footerQuote: "Unless we change directions, we will end up where we are headed.",
-  footerLine: 'Zhe WANG, Ph.D. · Graduate School of Engineering, The University of Osaka.',
+  footerLine: 'Zhe <b>WANG</b>, <i>Ph.D.</i>, The University of Osaka.',
 };
 
 /* ---- Site base URL -----------------------------------------------------
