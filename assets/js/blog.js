@@ -147,7 +147,26 @@ async function renderPost() {
       return window.hljs ? hljs.highlightAuto(code).value : code;
     },
   });
-  bodyEl.innerHTML = marked.parse(md);
+
+  // Shield math from Markdown: pull out $$…$$, \[…\], \(…\) and $…$ BEFORE
+  // Markdown runs (otherwise underscores become <em> and multi-line display
+  // math gets split), then put the untouched math back afterwards so KaTeX
+  // sees clean delimiters.
+  const mathStore = [];
+  const stash = m => `xMATHx${mathStore.push(m) - 1}xENDx`;
+  const protectSeg = seg => seg
+    .replace(/\$\$[\s\S]+?\$\$/g, stash)   // display  $$ ... $$
+    .replace(/\\\[[\s\S]+?\\\]/g, stash)   // display  \[ ... \]
+    .replace(/\\\([\s\S]+?\\\)/g, stash)   // inline   \( ... \)
+    .replace(/\$[^$\n]+?\$/g, stash);      // inline   $ ... $
+  // Skip code (odd parts) so a literal "$" in code isn't treated as math.
+  const protectedMd = md
+    .split(/(```[\s\S]*?```|`[^`\n]*`)/g)
+    .map((seg, i) => (i % 2 === 1 ? seg : protectSeg(seg)))
+    .join("");
+  let html = marked.parse(protectedMd);
+  html = html.replace(/xMATHx(\d+)xENDx/g, (_, i) => mathStore[+i]);
+  bodyEl.innerHTML = html;
 
   // Make in-post asset/links portable: any path written with a leading "/"
   // (e.g. /assets/img/fig.png) is re-pointed at the site base, so posts work

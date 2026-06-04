@@ -3,21 +3,28 @@
     "slug": "orbital-composition-analysis",
     "title": "Orbital Composition Analysis",
     "date": "2025-06-03",
-    "tags": ["Gaussian", "tutorial"],
+    "tags": ["Gaussian"],
     "summary": "A short guide on orbital composition analysis."
   },
   {
     "slug": "gaussian-calculation-task-continuation",
     "title": "Gaussian 16 Calculation Task Continuation",
     "date": "2024-02-13",
-    "tags": ["Gaussian", "tutorial"],
+    "tags": ["Gaussian"],
     "summary": "Continue your Gaussian job when unexpected termination."
   },
   {
     "slug": "computing-charge-transfer-rate-based-on-marcus-theory-using-gaussian",
     "title": "Computing Charge Transfer Rate Based on Marcus Theory Using Gaussian",
     "date": "2023-09-30",
-    "tags": ["Gaussian", "tutorial"],
+    "tags": ["Gaussian", "ADF"],
     "summary": "A quick guide to compute charge transfer rate."
+  },
+  {
+    "slug": "gaussian-common-errors-and-solutions",
+    "title": "Gaussian Common Errors and Solutions",
+    "date": "2021-06-06",
+    "tags": ["Gaussian"],
+    "summary": "A comprehensive collection of errors and their solutions during Gaussian calculations."
   }
 ]
