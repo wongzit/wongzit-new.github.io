@@ -239,11 +239,24 @@ main { padding: 46px 0 70px; min-height: 60vh; }
 
 /* ---- PUBLICATIONS (al-folio style, data-driven) ------------------------- */
 /* "List by Type" / "List by Year" navigation rows */
-.pub-nav { margin: 4px 0; color: var(--text-dim); font-size: 0.97rem; }
-.pub-nav b { color: var(--text); font-weight: 700; margin-right: 6px; }
-.pub-nav a { margin: 0 2px; }
-.pub-nav a.active { color: var(--text); font-weight: 700; }
-.pub-nav .sep { color: var(--text-faint); }
+.pub-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0; }
+.pub-nav b { color: var(--text); font-weight: 700; margin-right: 2px; }
+.pub-nav .sep { display: none; }                 /* pills don't need slashes */
+.pub-nav a {                                     /* glowing pill, like the .tag chips */
+  display: inline-block; padding: 5px 13px; border-radius: 100px;
+  font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.3;
+  color: var(--accent); background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
+  transition: all .18s ease;
+}
+.pub-nav a:hover {
+  border-color: var(--accent); transform: translateY(-1px);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.pub-nav a.active {
+  color: var(--bg); background: var(--accent); border-color: var(--accent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 50%, transparent);
+}
 
 /* search / filter box */
 .pub-filter {
@@ -272,7 +285,31 @@ main { padding: 46px 0 70px; min-height: 60vh; }
   width: 100%; aspect-ratio: 4 / 3; object-fit: contain;
   background: var(--bg-elev); border: 1px solid var(--border);
   border-radius: var(--radius-sm); padding: 6px;
+  cursor: zoom-in; transition: border-color .18s, transform .18s;
 }
+.pub__thumb:hover { border-color: var(--accent); transform: scale(1.02); }
+
+/* TOC zoom lightbox */
+#pub-lightbox {
+  position: fixed; inset: 0; z-index: 10000; display: none;
+  align-items: center; justify-content: center; padding: 32px;
+  background: rgba(0, 0, 0, 0.82); backdrop-filter: blur(4px);
+}
+#pub-lightbox.open { display: flex; }
+.pub-lightbox__img {
+  max-width: 92vw; max-height: 88vh; object-fit: contain;
+  background: #fff; padding: 10px; border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.pub-lightbox__close {
+  position: absolute; top: 18px; right: 24px;
+  width: 46px; height: 46px; border-radius: 50%;
+  font-size: 2rem; line-height: 1; cursor: pointer;
+  color: #fff; background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: grid; place-items: center; transition: all .15s;
+}
+.pub-lightbox__close:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 .pub__title { font-weight: 700; font-size: 1.12rem; margin: 0 0 6px; color: var(--text); line-height: 1.35; }
 .pub__authors { color: var(--text-dim); font-size: 0.98rem; margin: 0 0 5px; }
 .pub__authors .me { color: var(--text); font-weight: 600; border-bottom: 2px solid var(--accent); }

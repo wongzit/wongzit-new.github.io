@@ -73,6 +73,31 @@ function togglePanel(id) {
   if (el) el.classList.toggle("open");
 }
 
+/* ---------- TOC image lightbox ------------------------------------------ */
+function ensurePubLightbox() {
+  let lb = document.getElementById("pub-lightbox");
+  if (lb) return lb;
+  lb = document.createElement("div");
+  lb.id = "pub-lightbox";
+  lb.innerHTML = `<button class="pub-lightbox__close" aria-label="Close preview">&times;</button>
+                  <img class="pub-lightbox__img" alt="">`;
+  document.body.appendChild(lb);
+  const close = () => lb.classList.remove("open");
+  lb.addEventListener("click", e => { if (e.target === lb) close(); });    // click backdrop
+  lb.querySelector(".pub-lightbox__close").addEventListener("click", close);
+  document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  lb._img = lb.querySelector(".pub-lightbox__img");
+  return lb;
+}
+function openPubLightbox(src, alt) {
+  const lb = ensurePubLightbox();
+  lb._img.src = src;
+  lb._img.alt = alt || "";
+  lb.classList.add("open");
+}
+
+// `type` may be a single type ("paper"), several (["paper","review"]),
+// or "all" to show everything.
 function renderPublications(type) {
   const listEl = document.getElementById("pub-list");
   const yearNavEl = document.getElementById("pub-year-nav");
@@ -82,7 +107,8 @@ function renderPublications(type) {
   try { all = loadPubs(); }
   catch (e) { listEl.innerHTML = `<p class="muted">${e.message}</p>`; return; }
 
-  const items = all.filter(p => (p.type || "paper") === type)
+  const want = type === "all" ? null : (Array.isArray(type) ? type : [type]);
+  const items = all.filter(p => !want || want.includes(p.type || "paper"))
                    .sort((a, b) => b.year - a.year);
 
   if (!items.length) { listEl.innerHTML = `<p class="muted">Nothing here yet.</p>`; return; }
@@ -111,5 +137,12 @@ function renderPublications(type) {
   }
 
   if (filterEl) filterEl.addEventListener("input", e => draw(e.target.value));
+
+  // Click a TOC thumbnail to zoom it in a lightbox.
+  listEl.addEventListener("click", e => {
+    const t = e.target.closest(".pub__thumb");
+    if (t) openPubLightbox(t.src, t.alt);
+  });
+
   draw();
 }

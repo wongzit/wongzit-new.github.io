@@ -25,7 +25,8 @@ const SITE = {
     {
       label: "publications", href: "/publications.html",
       children: [
-        { label: "original papers",    href: "/publications.html" },
+        { label: "all",                href: "/publications.html" },
+        { label: "original papers",    href: "/papers.html" },
         { label: "accounts & reviews", href: "/reviews.html" },
         { label: "cover pictures",     href: "/covers.html" },
       ],
