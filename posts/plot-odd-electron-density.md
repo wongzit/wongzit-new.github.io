@@ -11,7 +11,7 @@ Source of this blog: [ResearchGate](https://www.researchgate.net/post/What-is-th
 **3. Generate combined HOMO and LUMO by adding two cubes of alpha and beta orbitals.**
 
 <p align="center">
-<img alt="figure72" src="/assets/blog/figure72.png" style="width:80%;">
+<img alt="figure72" src="/assets/blog/figure72.png" style="width:50%;">
 </p>
 
 **4. Square the new generated HOMO and LUMO cubes.**
@@ -29,7 +29,7 @@ Source of this blog: [ResearchGate](https://www.researchgate.net/post/What-is-th
 **6. Plot.**
 
 <p align="center">
-<img alt="figure75" src="/assets/blog/figure75.png" style="width:80%;">
+<img alt="figure75" src="/assets/blog/figure75.png" style="width:60%;">
 </p>
 
 > Input file of this calculation:
