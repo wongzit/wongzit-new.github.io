@@ -112,9 +112,9 @@ There are several important points for the input file:
 4. A .txt file including ring current grid information would be saved during the NMR calculation, so, you need to specify a file name for it.
 5. Include the molecular orbital numbers (those will be considered for NMR calculation) in the end of input file if you use `IOp(10/93=2)`. (For unrestricted calculation, alpha orbitals and beta orbitals are separated, the orbital numbers of alpha orbital are same as those displayed in GaussView, but, the orbital numbers of beta orbitals are those in GaussView plus occupied orbital numbers. e.g., for the ith alpha and beta orbitals, and total *n* occupied orbitals, you need to write "*i*" and "*i+n*".)
 
-<div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure81.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure81" src="/assets/blog/figure81.png" style="width:100%;">
+</p>
 
 Submit this input file to Gaussian calculation. Once the calculation is completed, .log (or .out) and .txt files would be generated, these 2 files are necessary for next step AICD calculation.
 
@@ -131,48 +131,48 @@ There are some useful option for make high quality AICD plots:
 ### `-m n`
 Molecular view in AICD plots, *n* = 1-4. (1: single view, surface only; 2: single view, surface and arrows; 3: multi view, surface only; 4: multi view, surface and arrows)
 
-<div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure82.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure82" src="/assets/blog/figure82.png" style="width:100%;">
+</p>
 
 ### `-b x y z`
 Direction of external magnetic field (default is 0 0 1), the external magnetic field is defined in vector space with *x*, *y*, *z* direction. The external is only defined in direction, the magnitude is out of consideration (e.g.: 0 0 1 is same as 0 0 2).
 
-<div class="col-sm-7 mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure83.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure83" src="/assets/blog/figure83.png" style="width:100%;">
+</p>
 
 ### `-l r`
 
 Iso-surface value.
 
-<div class="col-sm-7 mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure84.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure84" src="/assets/blog/figure84.png" style="width:100%;">
+</p>
 
 ### `-p n`
 
 Number of data points, default is 40000, larger *n* value will generate more arrows and smoother iso-surface. More computational cost is needed.
 
-<div class="col-sm-7 mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure85.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure85" src="/assets/blog/figure85.png" style="width:100%;">
+</p>
 
 ### `--maxarrowlength f`
 
 Define the maximum of arrow length, the arrows longer than value *f* would not be displayed in AICD map (similar option: `--minarrowlength`)
 
-<div class="col-sm-7 mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure86.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure86" src="/assets/blog/figure86.png" style="width:100%;">
+</p>
 
 ### `-s`
 
 Smoothly graphical representation, needs more computational cost.
 
-<div class="col-sm-7 mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure87.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure87" src="/assets/blog/figure87.png" style="width:100%;">
+</p>
 
 More options can be found from `AICD -h` command. After AICD calculation, several files would be generated and we need the files in the folder named as “*xxxxxxxxxxxxxx.d*”. Copy this folder to a computer with POV-Ray installed.
 
@@ -186,9 +186,9 @@ Here are some common issues when using the POV-Ray:
 
 The following figure shows how the POV-Ray renders an image:
 
-<div class="col-sm-7 mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure88.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure88" src="/assets/blog/figure88.png" style="width:100%;">
+</p>
 
 If the molecule is not displayed in full, please modify the `camera - location` coordinate <*x*, *y*, *z*> in the “*RenderMich.pov*” file. More negative *z* value will give smaller size molecule. 
 
@@ -203,9 +203,9 @@ camera{
 }
 ```
 
-<div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure89.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure89" src="/assets/blog/figure89.png" style="width:100%;">
+</p>
 
 ### (2) Geometries are overlapping with others
 
@@ -263,6 +263,6 @@ object           // side view in the 3rd column
 
 ```
 
-<div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/blog/figure810.png" class="img-fluid" zoomable=true %}
-</div>
+<p align="center">
+<img alt="figure810" src="/assets/blog/figure810.png" style="width:100%;">
+</p>
