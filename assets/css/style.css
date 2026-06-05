@@ -363,7 +363,12 @@ main { padding: 46px 0 70px; min-height: 60vh; }
 }
 .pa-hero__pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
 .pa-hero h1 { font-size: 2.8rem; letter-spacing: -0.03em; margin: 0 0 8px; }
-.pa-hero p.tag { color: var(--text-dim); font-size: 1.08rem; margin: 0 0 20px; max-width: 62ch; }
+.pa-hero p.tag {
+  display: block; color: var(--text-dim); font-size: 1.08rem; margin: 0 0 20px;
+  max-width: 62ch; font-family: var(--font-sans);
+  /* reset the chip ".tag" styling so the tagline is plain text, not a pill */
+  background: none; border: 0; border-radius: 0; padding: 0;
+}
 .pa-cta { display: flex; flex-wrap: wrap; gap: 10px; }
 
 /* primary (filled) button variant */
