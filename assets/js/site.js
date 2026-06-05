@@ -36,7 +36,7 @@ const SITE = {
       children: [
         { label: "py.Aroma",   href: "/program/pyaroma" },
         { label: "uv.Plotter", href: "/program/uvplotter" },
-        { label: "scripts",    href: "/programs.html#scripts" },
+        { label: "scripts",    href: "https://github.com/wongzit?tab=repositories" },
         { label: "mol.Viewer", href: "/program/online/molview.html" },
       ],
     },
