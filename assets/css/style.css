@@ -403,6 +403,7 @@ main { padding: 46px 0 70px; min-height: 60vh; }
 }
 .dl-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: var(--shadow); }
 .dl-card .ico { font-size: 1.7rem; line-height: 1; }
+.dl-card img.ico { width: 34px; height: 34px; object-fit: contain; display: block; }
 .dl-card .t { font-weight: 700; color: var(--text); }
 .dl-card .s { font-size: 0.8rem; color: var(--text-faint); }
 
