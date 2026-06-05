@@ -19,7 +19,7 @@
       <p class="tag">Open-source Python software for easily creating UV-vis spectra from
         Gaussian TD-DFT output files.</p>
       <div class="pa-cta">
-        <a class="btn btn-primary" href="https://drive.google.com/drive/folders/1R4a3_g4UJeRxrL_nqazdxVGyOfrwSXdE?usp=sharing">⬇️ Download</a>
+        <a class="btn" href="https://drive.google.com/drive/folders/1R4a3_g4UJeRxrL_nqazdxVGyOfrwSXdE?usp=sharing">⬇️ Download</a>
         <a class="btn" href="https://github.com/wongzit/uvPlotter">💻 GitHub</a>
       </div>
     </section>
@@ -30,13 +30,13 @@
 
     <!-- OVERVIEW -->
     <div class="pa-h"><h2>Overview</h2></div>
-    <p>uv.<strong>Plotter</strong> is an open-source Python program for easily creating a UV-vis
-    spectrum from a Gaussian TD-DFT output file. It is developed with Python 3.10.6, so it can be
-    run through a Python IDE, and is freely available on the
-    <a href="https://github.com/wongzit/uvPlotter">GitHub page</a> — source code and pre-built
+    <p>uv.<strong>Plotter</strong> is an open-source Python program for easily creating UV-vis
+    spectra from Gaussian TD-DFT output file(s). It is freely available on the
+    <a href="https://github.com/wongzit/uvPlotter">GitHub page</a>, source code and pre-built
     executables for macOS and Windows are provided for the latest release.</p>
 
-    <p><strong>How it works:</strong> uv.<strong>Plotter</strong> reads a Gaussian TD-DFT
+    <div class="pa-h"><h2>How it works</h2></div>
+    <p>uv.<strong>Plotter</strong> reads Gaussian TD-DFT
     calculation from <code>.log</code> or <code>.out</code> file(s), extracts the oscillator
     strengths, and computes the absorption curve using Gaussian-type broadening. The underlying
     math is described <a href="https://gaussian.com/uvvisplot/">here</a>.</p>
@@ -82,19 +82,19 @@
     <p>The main window is shown below. Open TD-DFT output file(s) with the <em>Open</em> button —
     up to 10 files at once.</p>
     <p><img src="../../assets/uvPlotter/fig1.png" alt="Main window"
-            style="border-radius:var(--radius-sm);border:1px solid var(--border)"
+            style="border-radius:var(--radius-sm);border:1px solid var(--border);width:60%"
             onerror="this.style.display='none'"></p>
 
     <p>Click the <em>Plot</em> button to draw the UV-vis absorption spectra with the built-in
     module.</p>
     <p><img src="../../assets/uvPlotter/abs_spec_1660112178.png" alt="Absorption spectrum"
-            style="border-radius:var(--radius-sm);border:1px solid var(--border)"
+            style="border-radius:var(--radius-sm);border:1px solid var(--border);width:60%"
             onerror="this.style.display='none'"></p>
 
     <p>The <em>Label</em> field is useful when plotting more than one output file — it sets the
     short name of each curve shown in the legend (default: the output file name).</p>
     <p><img src="../../assets/uvPlotter/abs_spec_1660112202.png" alt="Labeled spectrum"
-            style="border-radius:var(--radius-sm);border:1px solid var(--border)"
+            style="border-radius:var(--radius-sm);border:1px solid var(--border);width:60%"
             onerror="this.style.display='none'"></p>
 
     <p>When the spectra window is closed, a <code>.png</code> file is saved in the same directory
@@ -105,7 +105,7 @@
     <p>Colors and plotting parameters can be changed from the <em>Setting</em> panel. Colors follow
     <em>matplotlib</em> definitions (see the program's <em>Appendix</em> for the full list).</p>
     <p><img src="../../assets/uvPlotter/fig2.png" alt="Settings panel"
-            style="border-radius:var(--radius-sm);border:1px solid var(--border)"
+            style="border-radius:var(--radius-sm);border:1px solid var(--border);width:60%"
             onerror="this.style.display='none'"></p>
 
     <p>The default standard deviation is 0.4 eV, matching <em>GaussView</em>. A larger value gives
