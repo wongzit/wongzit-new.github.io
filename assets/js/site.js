@@ -25,7 +25,7 @@ const SITE = {
     {
       label: "publications", href: "/publications.html",
       children: [
-        { label: "all",                href: "/publications.html" },
+        { label: "all publications",                href: "/publications.html" },
         { label: "original papers",    href: "/papers.html" },
         { label: "accounts & reviews", href: "/reviews.html" },
         { label: "cover pictures",     href: "/covers.html" },
@@ -36,8 +36,8 @@ const SITE = {
       children: [
         { label: "py.Aroma",   href: "/program/pyaroma" },
         { label: "uv.Plotter", href: "/program/uvplotter" },
-        { label: "scripts",    href: "https://github.com/wongzit?tab=repositories" },
         { label: "mol.Viewer", href: "/program/online/molview.html" },
+        { label: "scripts",    href: "/programs.html#scripts" },
       ],
     },
     { label: "teaching", href: "/teaching.html" },
