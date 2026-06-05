@@ -5,19 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>py.Aroma · Zhe WANG</title>
   <meta name="description" content="py.Aroma — a free, open-source toolkit for aromaticity analysis.">
-  <link rel="stylesheet" href="../../assets/css/style.css?v=4">
+  <link rel="stylesheet" href="../../assets/css/style.css?v=5">
 </head>
 <body>
   <div id="site-header"></div>
 
   <main class="container reading">
-    <div class="page-head">
-      <div class="kicker">// software</div>
-      <h1>py.<strong>Aroma</strong></h1>
-      <p class="lead">A free, open-source toolkit for aromaticity analysis.</p>
-    </div>
 
-    <!-- py.Aroma sub-navigation. Links are relative so they work anywhere. -->
+    <!-- HERO -->
+    <section class="pa-hero">
+      <span class="pa-hero__pill"><span class="dot"></span> Version 5.0 · Build 5428</span>
+      <h1>py.<strong>Aroma</strong></h1>
+      <p class="tag">A free, open-source toolkit for aromaticity analysis — BLA, HOMA,
+        HOMER, POAV, the full NICS family, dissected NICS (NICSπ), and natural resonance
+        theory, all behind an intuitive graphical interface.</p>
+      <div class="pa-cta">
+        <a class="btn btn-primary" href="download/">⬇️ Download</a>
+        <a class="btn" href="manual_v5.pdf">📄 Manual</a>
+        <a class="btn" href="citation/">💎 Citations</a>
+        <a class="btn" href="license/">⚖️ License</a>
+      </div>
+    </section>
+
+    <!-- sub-nav -->
     <p class="pub-nav">
       <a href="./" class="active">🏕️ home</a><span class="sep">/</span>
       <a href="download/">⬇️ download</a><span class="sep">/</span>
@@ -26,61 +36,70 @@
       <a href="license/">⚖️ license</a>
     </p>
 
-    <hr class="divider">
-
-    <p><img src="../../assets/pyAroma/banner1.png" alt="py.Aroma" style="border-radius:var(--radius-sm)"
-            onerror="this.style.display='none'"></p>
-    <p><img src="../../assets/pyAroma/banner2.png" alt="py.Aroma 5" style="border-radius:var(--radius-sm)"
+    <p><img src="../../assets/pyAroma/banner2.png" alt="py.Aroma 5"
+            style="border-radius:var(--radius-sm);border:1px solid var(--border)"
             onerror="this.style.display='none'"></p>
 
     <p><strong>py.Aroma 5</strong> is a free, open-source program toolkit for aromaticity
-    analysis. It supports BLA, HOMA, HOMER, POAV, NICS (Single point, 2D, 3D, XY-Scan,
-    Integrated NICS), dissected NICS (i.e., NICSπ via the NBO program), and natural
-    resonance theory (NRT) analysis. Optional functionalities for plotting NMR spectra,
-    a computational supporting-information generator, and geometry operations have been
-    integrated.</p>
+    analysis. Optional functionalities for plotting NMR spectra, a computational
+    supporting-information generator, and geometry operations are integrated.</p>
 
-    <p><strong>py.Aroma 5</strong> is built with Python 3.13 and a <em>PyQt6</em>
-    graphical user interface. It uses third-party libraries including <em>Matplotlib</em>,
-    <em>NumPy</em>, <em>OpenPyXL</em> and <em>NetworkX</em>. This project is released under
-    the <a href="license/">CC BY-NC-SA 4.0</a> license.</p>
-
-    <p>To download <strong>py.Aroma 5</strong>, please visit the
-    <a href="download/">download</a> page. For the program user manual, please check the
-    <a href="manual_v5.pdf">manual</a>. Known issues in the latest version are summarized on
-    the <a href="issue/">issues</a> page — if you find a problem, please refer to it or
-    contact me.</p>
-
-    <p>Feature requests and feedback are welcome. Feel free to contact me via
-    <a href="mailto:wang.zhe.dr@gmail.com">e-mail</a>, or use the <em>Contact Developer</em>
-    button in the start-up window of <strong>py.Aroma 5</strong>. Questions and bug reports
-    are appreciated.</p>
-
-    <p>面向中国用户的介绍贴见计算化学公社：<a href="http://bbs.keinsci.com/thread-42277-1-1.html">🔗</a>。</p>
-
-    <h2>Statements</h2>
-    <p><strong>py.Aroma 5</strong> is distributed in the hope that it will be useful, but
-    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-    FOR A PARTICULAR PURPOSE.</p>
-
-    <p>If <strong>py.Aroma 5</strong> is utilized in your work, or the code is implied in
-    your own code, please consider citing the following:</p>
-
-    <div class="card">
-      Zhe Wang, py.Aroma: An Intuitive Graphical User Interface for Diverse Aromaticity
-      Analyses, <em>Chemistry</em>, <strong>2024</strong>, <em>6</em>, (<em>6</em>),
-      1692–1703. DOI:
-      <a href="https://www.mdpi.com/2624-8549/6/6/103">10.3390/chemistry6060103</a>
+    <!-- FEATURES -->
+    <div class="pa-h"><h2>What it does</h2></div>
+    <div class="feature-grid">
+      <div class="feature"><div class="ico">🧭</div><div class="ft">NICS</div><div class="fd">Single-point, 2D, 3D, XY-Scan & integrated NICS</div></div>
+      <div class="feature"><div class="ico">🪞</div><div class="ft">Dissected NICS</div><div class="fd">NICSπ via the NBO program</div></div>
+      <div class="feature"><div class="ico">📐</div><div class="ft">HOMA / HOMER</div><div class="fd">Geometric aromaticity indices</div></div>
+      <div class="feature"><div class="ico">📊</div><div class="ft">BLA</div><div class="fd">Bond-length alternation with color maps</div></div>
+      <div class="feature"><div class="ico">🧊</div><div class="ft">POAV</div><div class="fd">π-orbital axis vector analysis</div></div>
+      <div class="feature"><div class="ico">⚛️</div><div class="ft">NRT</div><div class="fd">Natural resonance theory analysis</div></div>
+      <div class="feature"><div class="ico">📈</div><div class="ft">NMR plotting</div><div class="fd">Generate publication-ready spectra</div></div>
+      <div class="feature"><div class="ico">🗂️</div><div class="ft">SI generator</div><div class="fd">Computational supporting information</div></div>
+      <div class="feature"><div class="ico">🔧</div><div class="ft">Geometry ops</div><div class="fd">Type-I & Type-II file operations</div></div>
     </div>
 
-    <h2>Contributors</h2>
-    <p><strong>py.Aroma 5</strong> is developed by Zhe WANG (The University of Osaka), with
-    contributions from Takuma MIYAMURA (Uni zu Köln) and Takumi SHIOKAWA (Kyoto University).
-    See the <em>ABOUT</em> page in the program for details.</p>
+    <!-- BUILT WITH -->
+    <div class="pa-h"><h2>Built with</h2></div>
+    <div class="tech-badges">
+      <span class="tech-badge">Python 3.13</span>
+      <span class="tech-badge">PyQt6</span>
+      <span class="tech-badge">Matplotlib</span>
+      <span class="tech-badge">NumPy</span>
+      <span class="tech-badge">OpenPyXL</span>
+      <span class="tech-badge">NetworkX</span>
+    </div>
+    <p class="muted" style="margin-top:14px">Released under the
+      <a href="license/">CC BY-NC-SA 4.0</a> license. Known issues in the latest version are
+      summarized on the <a href="issue/">issues</a> page. For a Chinese-language
+      introduction, see <a href="http://bbs.keinsci.com/thread-42277-1-1.html">计算化学公社 🔗</a>.</p>
+
+    <!-- CITE -->
+    <div class="pa-h"><h2>How to cite</h2></div>
+    <p class="muted">If <strong>py.Aroma 5</strong> is used in your work, or the code is
+    incorporated into your own, please consider citing:</p>
+    <div class="card" style="border-left:3px solid var(--accent)">
+      Zhe Wang, <em>py.Aroma: An Intuitive Graphical User Interface for Diverse Aromaticity
+      Analyses</em>, <em>Chemistry</em>, <strong>2024</strong>, <em>6</em>, (6), 1692–1703.
+      DOI: <a href="https://www.mdpi.com/2624-8549/6/6/103">10.3390/chemistry6060103</a>
+    </div>
+
+    <!-- CONTRIBUTORS -->
+    <div class="pa-h"><h2>Contributors</h2></div>
+    <p class="muted"><strong>py.Aroma 5</strong> is developed by Zhe WANG (The University of
+    Osaka), with contributions from Takuma MIYAMURA (Uni zu Köln) and Takumi SHIOKAWA
+    (Kyoto University). See the <em>ABOUT</em> page in the program for details.</p>
+
+    <p class="muted" style="margin-top:20px">Feedback and bug reports are welcome — contact me
+    via <a href="mailto:wang.zhe.dr@gmail.com">e-mail</a> or the <em>Contact Developer</em>
+    button in the program's start-up window.</p>
+
+    <p style="margin-top:18px"><strong>py.Aroma 5</strong> is distributed in the hope that it
+    will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
   </main>
 
   <div id="site-footer"></div>
 
-  <script src="../../assets/js/site.js?v=4"></script>
+  <script src="../../assets/js/site.js?v=5"></script>
 </body>
 </html>
