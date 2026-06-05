@@ -43,7 +43,7 @@
   --radius:        14px;
   --radius-sm:     9px;
   --maxw:          1080px;
-  --maxw-read:     760px;     /* narrow column for reading (blog/cv) */
+  --maxw-read:     900px;     /* content column width (matches publications) */
 
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", ui-monospace, Menlo, Consolas, monospace;
