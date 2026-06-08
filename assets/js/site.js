@@ -134,17 +134,10 @@ function buildFooter() {
   const year = new Date().getFullYear();
   const footer = document.createElement("footer");
   footer.className = "site-footer";
-  const claudeLogo = `<svg class="claude-logo" viewBox="0 0 100 100" aria-hidden="true">
-      <path d="M50.0,4.0 L46.1,35.5 L27.0,10.2 L39.4,39.4 L10.2,27.0 L35.5,46.1 L4.0,50.0 L35.5,53.9 L10.2,73.0 L39.4,60.6 L27.0,89.8 L46.1,64.5 L50.0,96.0 L53.9,64.5 L73.0,89.8 L60.6,60.6 L89.8,73.0 L64.5,53.9 L96.0,50.0 L64.5,46.1 L89.8,27.0 L60.6,39.4 L73.0,10.2 L53.9,35.5 Z"/>
-    </svg>`;
   footer.innerHTML = `
     <div class="container">
       <span class="quote">${SITE.footerQuote}</span>
       <span>© ${year} ${SITE.footerLine}</span>
-    </div>
-    <div class="powered-by">
-      Powered by
-      <a href="https://www.claude.com/product/claude-code" target="_blank" rel="noopener">${claudeLogo} Claude Code</a>
     </div>`;
   const slot = document.getElementById("site-footer");
   (slot || document.body).append(footer);
