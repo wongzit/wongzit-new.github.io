@@ -195,6 +195,27 @@ main { padding: 46px 0 70px; min-height: 60vh; }
   border: 1px solid var(--border); border-radius: var(--radius-sm);
   margin: 14px 0 16px;
 }
+
+/* ---- SCXRD crystal-structure gallery ----------------------------------- */
+.xrd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.xrd-card {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
+  overflow: hidden; transition: border-color .18s, transform .18s, box-shadow .18s;
+}
+.xrd-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: var(--shadow); }
+.xrd-card__img {
+  display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: contain;
+  background: #fff; padding: 8px; border-bottom: 1px solid var(--border);
+}
+.xrd-card__body { padding: 12px 14px 14px; }
+.xrd-card__name { font-weight: 700; color: var(--text); margin: 0 0 4px; }
+.xrd-card__meta { color: var(--text-faint); font-size: 0.84rem; font-family: var(--font-mono); }
+.xrd-card__links { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.xrd-card__links a {
+  font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em;
+  padding: 4px 9px; border-radius: 6px; border: 1px solid var(--border); color: var(--text-dim);
+}
+.xrd-card__links a:hover { border-color: var(--accent); color: var(--accent); }
 .grid { display: grid; gap: 18px; }
 .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
 .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
