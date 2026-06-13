@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="/assets/img/favicon/favicon.png">
   <title>CAS No. · Zhe WANG</title>
   <meta name="description" content="CAS numbers and structures of compounds from Zhe WANG's publications.">
-  <link rel="stylesheet" href="assets/css/style.css?v=16">
+  <link rel="stylesheet" href="assets/css/style.css?v=17">
 </head>
 <body>
   <div id="site-header"></div>
@@ -35,7 +35,8 @@
            assets/img/cas/<name>.gif
          • Badge: use class "xrd" for a single-crystal structure, or "calc"
            for a QM-optimized structure — and set its label text accordingly.
-         • CAS link points to CAS Common Chemistry; change/remove as you like.
+         • XYZ button: downloads assets/cas/<name>.xyz (Cartesian coordinates).
+           Put the matching .xyz file there; the "download" attribute saves it.
          ==================================================================== -->
     <div class="cas-grid">
 
@@ -48,7 +49,7 @@
           <p class="cas-card__name">Compound name / label</p>
           <p class="cas-card__meta">CAS 000000-00-0</p>
           <div class="cas-card__links">
-            <a href="https://commonchemistry.cas.org/results?q=000000-00-0" target="_blank" rel="noopener">CAS</a>
+            <a href="assets/cas/compound-1.xyz" download>XYZ</a>
             <a href="https://www.ccdc.cam.ac.uk/structures/Search?Ccdcid=0000000" target="_blank" rel="noopener">CCDC</a>
             <a href="#" target="_blank" rel="noopener">DOI</a>
           </div>
@@ -64,7 +65,7 @@
           <p class="cas-card__name">Compound name / label</p>
           <p class="cas-card__meta">CAS 000000-00-0</p>
           <div class="cas-card__links">
-            <a href="https://commonchemistry.cas.org/results?q=000000-00-0" target="_blank" rel="noopener">CAS</a>
+            <a href="assets/cas/compound-2.xyz" download>XYZ</a>
             <a href="#" target="_blank" rel="noopener">DOI</a>
           </div>
         </div>
@@ -78,7 +79,7 @@
           <p class="cas-card__name">Compound name / label</p>
           <p class="cas-card__meta">CAS 000000-00-0</p>
           <div class="cas-card__links">
-            <a href="https://commonchemistry.cas.org/results?q=000000-00-0" target="_blank" rel="noopener">CAS</a>
+            <a href="assets/cas/compound-3.xyz" download>XYZ</a>
             <a href="#" target="_blank" rel="noopener">DOI</a>
           </div>
         </div>
@@ -89,6 +90,6 @@
 
   <div id="site-footer"></div>
 
-  <script src="assets/js/site.js?v=16"></script>
+  <script src="assets/js/site.js?v=17"></script>
 </body>
 </html>
