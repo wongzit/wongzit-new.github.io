@@ -303,7 +303,7 @@ references (currently 154 in the live repo — most of them are the per-post
 some pages will load a stale stylesheet — that is exactly the bug the count
 check catches.
 
-Current state: live repo is at `?v=17`, test repo at `?v=25`. They are
+Current state: live repo is at `?v=17`, test repo at `?v=26`. They are
 independent counters; do not try to make them match.
 
 ---
@@ -805,12 +805,15 @@ The `onerror` text is the fallback if the image is missing.
 a red spin-down arrow in dark mode and a blue spin-up arrow in light mode. They
 switch with the ☀️/🌙 toggle; links keep the normal hand and text boxes the
 I-beam. The images are `assets/img/cursor/spin-down.png` / `spin-up.png`
-(15 × 32 px) plus `@2x` versions (30 × 64 px) for Retina screens. Browsers only
-accept pointers up to 32 px, so keep that size. The rules are in the
+(18 × 38 px) plus `@2x` versions (36 × 76 px) for Retina screens. Pointers
+larger than 32 px work, but Chrome and Firefox show the normal system arrow
+while the image would stick out past the window edge; don't go much bigger
+than this. The rules are in the
 "MOUSE POINTER" block at the top of `style.css`; the two numbers after each
-image (`2 31`, `13 1`) are the click point, in pixels from the image's top-left
+image (`3 37`, `15 1`) are the click point, in pixels from the image's top-left
 corner — they sit on the arrow tips. If you redraw the arrows, update those
-numbers and bump `?v=` (§5).
+numbers, change the `?38` after the image names (so browsers fetch the new
+images) and bump `?v=` (§5).
 
 **Favicon:** `assets/img/favicon/favicon.svg` (preferred) and `favicon.png`
 (fallback), referenced from the `<head>` of every page. The navbar logo is a

@@ -26,19 +26,21 @@
 
 /* ---- MOUSE POINTER (electron-spin arrows) --------------------------------
    Dark mode: red spin-down arrow. Light mode: blue spin-up arrow.
-   Images: assets/img/cursor/spin-{down,up}.png (15×32 px) + @2x (30×64, Retina).
+   Images: assets/img/cursor/spin-{down,up}.png (18×38 px) + @2x (36×76, Retina).
    The two numbers after each image are the click point ("hotspot") in px
    from the image's top-left corner — set on the tip of each arrow.
+   "?38" makes browsers fetch new images: change it whenever you replace them.
+   Pointers over 32 px fall back to the system arrow at the very window edge.
    Links keep the normal hand; text fields keep the I-beam. */
 html {
-  cursor: url("../img/cursor/spin-down.png") 2 31, auto;
-  cursor: -webkit-image-set(url("../img/cursor/spin-down.png") 1x, url("../img/cursor/spin-down@2x.png") 2x) 2 31, auto;
-  cursor: image-set(url("../img/cursor/spin-down.png") 1x, url("../img/cursor/spin-down@2x.png") 2x) 2 31, auto;
+  cursor: url("../img/cursor/spin-down.png?38") 3 37, auto;
+  cursor: -webkit-image-set(url("../img/cursor/spin-down.png?38") 1x, url("../img/cursor/spin-down@2x.png?38") 2x) 3 37, auto;
+  cursor: image-set(url("../img/cursor/spin-down.png?38") 1x, url("../img/cursor/spin-down@2x.png?38") 2x) 3 37, auto;
 }
 html[data-theme="light"] {
-  cursor: url("../img/cursor/spin-up.png") 13 1, auto;
-  cursor: -webkit-image-set(url("../img/cursor/spin-up.png") 1x, url("../img/cursor/spin-up@2x.png") 2x) 13 1, auto;
-  cursor: image-set(url("../img/cursor/spin-up.png") 1x, url("../img/cursor/spin-up@2x.png") 2x) 13 1, auto;
+  cursor: url("../img/cursor/spin-up.png?38") 15 1, auto;
+  cursor: -webkit-image-set(url("../img/cursor/spin-up.png?38") 1x, url("../img/cursor/spin-up@2x.png?38") 2x) 15 1, auto;
+  cursor: image-set(url("../img/cursor/spin-up.png?38") 1x, url("../img/cursor/spin-up@2x.png?38") 2x) 15 1, auto;
 }
 input:not([type="button"]):not([type="submit"]):not([type="checkbox"]):not([type="radio"]), textarea { cursor: text; }
 
