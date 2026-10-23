@@ -308,7 +308,7 @@ references (currently 154 in the live repo — most of them are the per-post
 some pages will load a stale stylesheet — that is exactly the bug the count
 check catches.
 
-Current state: live repo is at `?v=22`, test repo at `?v=30`. They are
+Current state: live repo is at `?v=22`, test repo at `?v=31`. They are
 independent counters; do not try to make them match.
 
 ---
@@ -332,6 +332,21 @@ window.NEWS = [
 ```
 
 - `date` is `YYYY-MM-DD`; it is shown as "Nov 2, 2026".
+- **Story items.** For news with more to say, give a `title` and a `body`
+  instead of `text`. Only the title is shown on the home page and in the list,
+  as a link; clicking it opens the full story at `news.html?id=<id>`, laid out
+  like a blog post:
+
+  ```js
+  { date: "2026-11-02", id: "jacs-2026", title: `Our paper is out in JACS`, body: `
+      <p>First paragraph …</p>
+      <img src="assets/news/jacs-2026.png" alt="">
+    ` },
+  ```
+
+  `id` is the story's address — lowercase letters, numbers and dashes; don't
+  change it once shared (if left out, one is made from the date and title).
+  Put pictures in `assets/news/`.
 - `text` goes between backticks `` ` … ` `` so quotes and apostrophes need no
   escaping; HTML (`<i>`, `<a href="…">`) is allowed.
 - Comma after every item except the last (`node --check data/news.js` checks it).
