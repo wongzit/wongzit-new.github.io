@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Accounts &amp; Reviews · Zhe WANG</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=23">
+  <link rel="stylesheet" href="assets/css/style.css?v=24">
 </head>
 <body>
   <div id="site-header"></div>
@@ -24,9 +24,12 @@
       <a href="reviews.html" class="active">accounts &amp; reviews</a><span class="sep">/</span>
       <a href="covers.html">cover pictures</a>
     </p>
-    <p class="pub-nav" id="pub-year-nav"></p>
-
-    <input id="pub-filter" class="pub-filter" type="search" placeholder="Type to filter…">
+    <!-- Search box + year and sort pull-downs. pubs.js fills in the menus. -->
+    <div class="pub-toolbar">
+      <input id="pub-filter" class="pub-filter" type="search" placeholder="Search by title, author, journal or year" aria-label="Search publications">
+      <select id="pub-year" class="pub-select" aria-label="Publication year"></select>
+      <select id="pub-sort" class="pub-select" aria-label="Sort order"></select>
+    </div>
 
     <div id="pub-list"></div>
   </main>
@@ -36,9 +39,9 @@
   <script async src="https://badge.dimensions.ai/badge.js"></script>
   <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
 
-  <script src="data/publications.js?v=23"></script>
-  <script src="assets/js/site.js?v=23"></script>
-  <script src="assets/js/pubs.js?v=23"></script>
+  <script src="data/publications.js?v=24"></script>
+  <script src="assets/js/site.js?v=24"></script>
+  <script src="assets/js/pubs.js?v=24"></script>
   <script>renderPublications("review");</script>
 </body>
 </html>
