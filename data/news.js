@@ -23,7 +23,7 @@
    • Comma after every item except the last one.
    ========================================================================== */
 window.NEWS = [
-  { date: "2026-10-23", id: "example-story", title: `Example: a news item with its own page`, body: `
+  { date: "2026-10-22", id: "example-story", title: `Example: a news item with its own page`, body: `
       <p>This is an example of a <b>story</b> news item, made to show how the new
       feature works. On the home page and in the news list only its title appears;
       clicking the title opens this page.</p>
