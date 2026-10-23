@@ -696,7 +696,8 @@ block, edit the text.
 automatically for any address that does not exist. It shows the same short
 text in six languages, one after another (English, 日本語, 简体中文, 繁體中文,
 粵語, 한국어); each language is one `<section class="nf-text">` you can edit
-directly, and a "Go back" / "Home" pair of buttons sits at the top. Two things
+directly, and two plain text links, "‹ Go back" and "Home", sit at the top
+(the English text is justified; the other languages are not). Two things
 are different from the other pages: a small script at the top of `<head>` sets
 the base address (because the page can appear at any depth, e.g. `/a/b/c/`),
 and its few page-only styles sit in a `<style>` block in the page itself. The

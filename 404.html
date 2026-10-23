@@ -35,7 +35,10 @@
     .nf-text p { font-size: 1.08rem; line-height: 1.9; color: var(--text-dim); margin: 0 0 1.2em; }
     .nf-text p:last-child { color: var(--text); margin-bottom: 0; }
     .nf-text + .divider { margin: 44px 0; }
-    .nf-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 40px; }
+    .nf-text[lang="en"] p { text-align: justify; }          /* English only: justified to the column width */
+    .nf-actions { display: flex; flex-wrap: wrap; gap: 28px; margin: 10px 0 40px; font-size: 1.1rem; }
+    .nf-actions a { color: var(--accent); text-decoration: none; }   /* plain text links */
+    .nf-actions a:hover { text-decoration: underline; text-underline-offset: 3px; }
   </style>
 </head>
 <body>
@@ -49,8 +52,8 @@
     </div>
 
     <div class="nf-actions">
-      <a class="btn nf-back" href="./">← Go back</a>
-      <a class="btn" href="./">Home</a>
+      <a class="nf-back" href="./">‹ Go back</a>
+      <a href="./">Home</a>
     </div>
 
     <!-- ====================================================================
