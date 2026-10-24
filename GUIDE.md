@@ -308,7 +308,7 @@ references (currently 154 in the live repo — most of them are the per-post
 some pages will load a stale stylesheet — that is exactly the bug the count
 check catches.
 
-Current state: live repo is at `?v=24`, test repo at `?v=32`. They are
+Current state: live repo is at `?v=24`, test repo at `?v=33`. They are
 independent counters; do not try to make them match.
 
 ---
@@ -514,8 +514,9 @@ Field by field:
   Altmetric doughnut and Dimensions citation badge. Leave it `""` to hide both
   (preprints usually should).
 - **`links`** — see below.
-- **`abstract`** / **`bibtex`** — optional; each adds a toggle button that
-  expands a panel in place.
+- **`abstract`** / **`bibtex`** — optional; each adds a toggle button (ABS /
+  BIB) that expands a panel in place. Only one of the two is open at a time:
+  clicking the other one switches, clicking the same one again closes it.
 
 **Buttons.** One button is generated per entry in `links`, in this fixed order:
 
