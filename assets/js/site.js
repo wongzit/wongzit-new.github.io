@@ -22,6 +22,7 @@ const SITE = {
     { label: "home",         href: "/" },
     { label: "cv",           href: "/cv.html" },
     { label: "research",     href: "/research.html" },
+    { label: "team",         href: "/team.html" },
     {
       label: "publications", href: "/publications.html",
       children: [
