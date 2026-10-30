@@ -314,7 +314,7 @@ references (currently 154 in the live repo — most of them are the per-post
 some pages will load a stale stylesheet — that is exactly the bug the count
 check catches.
 
-Current state: live repo is at `?v=26`, test repo at `?v=36`. They are
+Current state: live repo is at `?v=26`, test repo at `?v=37`. They are
 independent counters; do not try to make them match.
 
 ---
@@ -832,6 +832,9 @@ Feature icons come from `assets/img/feat/<name>.png`; if a file is missing, the
 emoji in the `onerror` attribute is shown instead.
 
 ### 6.10b The team page (`team.html`)
+
+The page is not in the top menu; it is reached from the "👥 Team →" button
+next to "🔬 Compounds & CAS No. →" at the top of `research.html`.
 
 Everything on the team page comes from **`data/team.js`** — edit that file, not
 the page. It has three lists (the instructions at the top of the file show every
