@@ -32,7 +32,7 @@ const DEFAULT_PRESET = "acs";
 const STORE_KEY    = "pubExport.v1";                // a visitor's last choices (their browser only)
 
 const FIELD_NAMES = { authors: "Authors", title: "Title", journal: "Journal", year: "Year",
-                      volume: "Volume", pages: "Pages", doi: "DOI" };
+                      volume: "Volume", issue: "Issue", pages: "Pages", doi: "DOI" };
 const WRAPS = { "": ["", ""], "()": ["(", ")"], "[]": ["[", "]"],
                 "\u201c\u201d": ["\u201c", "\u201d"], "\"\"": ["\"", "\""] };
 const NUMS  = { none: null, dot: n => n + ".", br: n => "[" + n + "]", par: n => "(" + n + ")", rp: n => n + ")" };
@@ -59,27 +59,27 @@ const PRESETS = {
   acs: { label: "ACS \u2014 J. Am. Chem. Soc.", doiFmt: "label", ending: ".",
     names: { order: "f,g", given: "init", middle: true, initSpace: true, caps: false, sep: "; ", last: "none" },
     fields: [F("authors",1,0,0,"",""), F("title",1,0,0,"",". "), F("journal",1,0,1,"",". "), F("year",1,1,0,""," "),
-             F("volume",1,0,1,"",", "), F("pages",1,0,0,"",", "), F("doi",0,0,0,"",". ")] },
+             F("volume",1,0,1,"",", "), F("issue",0,0,0,"()"," "), F("pages",1,0,0,"",", "), F("doi",0,0,0,"",". ")] },
   rsc: { label: "RSC \u2014 Chem. Sci., Chem. Commun.", doiFmt: "label", ending: ".",
     names: { order: "gf", given: "init", middle: true, initSpace: true, caps: false, sep: ", ", last: "and" },
     fields: [F("authors",1,0,0,"",""), F("journal",1,0,1,"",", "), F("year",1,0,0,"",", "), F("volume",1,1,0,"",", "),
-             F("pages",1,0,0,"",", "), F("title",0,0,0,"",", "), F("doi",0,0,0,"",", ")] },
+             F("issue",0,0,0,"()"," "), F("pages",1,0,0,"",", "), F("title",0,0,0,"",", "), F("doi",0,0,0,"",", ")] },
   wiley: { label: "Wiley \u2014 Angew. Chem., Chem. Eur. J.", doiFmt: "label", ending: ".",
     names: { order: "gf", given: "init", middle: true, initSpace: true, caps: false, sep: ", ", last: "none" },
     fields: [F("authors",1,0,0,"",""), F("journal",1,0,1,"",", "), F("year",1,1,0,""," "), F("volume",1,0,1,"",", "),
-             F("pages",1,0,0,"",", "), F("title",0,0,0,"",", "), F("doi",0,0,0,"",", ")] },
+             F("issue",0,0,0,"()"," "), F("pages",1,0,0,"",", "), F("title",0,0,0,"",", "), F("doi",0,0,0,"",", ")] },
   nature: { label: "Nature", doiFmt: "url", ending: ".",
     names: { order: "f,g", given: "init", middle: true, initSpace: true, caps: false, sep: ", ", last: "amp" },
     fields: [F("authors",1,0,0,"",""), F("title",1,0,0,"",". "), F("journal",1,0,1,"",". "), F("volume",1,1,0,""," "),
-             F("pages",1,0,0,"",", "), F("year",1,0,0,"()"," "), F("doi",0,0,0,"",". ")] },
+             F("issue",0,0,0,"()"," "), F("pages",1,0,0,"",", "), F("year",1,0,0,"()"," "), F("doi",0,0,0,"",". ")] },
   apa: { label: "APA (7th ed.)", doiFmt: "url", ending: ".",
     names: { order: "f,g", given: "init", middle: true, initSpace: true, caps: false, sep: ", ", last: "oxamp" },
     fields: [F("authors",1,0,0,"",""), F("year",1,0,0,"()"," "), F("title",1,0,0,"",". "), F("journal",1,0,1,"",". "),
-             F("volume",1,0,1,"",", "), F("pages",1,0,0,"",", "), F("doi",1,0,0,"",". ")] },
+             F("volume",1,0,1,"",", "), F("issue",1,0,0,"()",""), F("pages",1,0,0,"",", "), F("doi",1,0,0,"",". ")] },
   site: { label: "This website (full names)", doiFmt: "label", ending: ".",
     names: { order: "gf", given: "full", middle: true, initSpace: true, caps: false, sep: ", ", last: "none" },
     fields: [F("authors",1,0,0,"",""), F("title",1,0,0,"",". "), F("journal",1,0,1,"",". "), F("year",1,1,0,"",", "),
-             F("volume",1,0,1,"",", "), F("pages",1,0,0,"",", "), F("doi",0,0,0,"",". ")] },
+             F("volume",1,0,1,"",", "), F("issue",0,0,0,"()"," "), F("pages",1,0,0,"",", "), F("doi",0,0,0,"",". ")] },
 };
 
 /* ======================================================================== */
@@ -139,7 +139,7 @@ function parseAuthors(html) {
 // "<i>J. Am. Chem. Soc.</i>, <b>2026</b>, <i>148</i>, 20974–20984." → parts
 function parseVenue(html) {
   const v = String(html == null ? "" : html).trim();
-  const out = { journal: "", volume: "", pages: "" };
+  const out = { journal: "", volume: "", issue: "", pages: "" };
   const m = v.match(/^<(i|em)>([\s\S]*?)<\/\1>\s*,?\s*([\s\S]*)$/i);
   if (!m) { out.journal = clean(v).replace(/[.,\s]+$/, ""); return out; }
   out.journal = clean(m[2]).replace(/,$/, "");
@@ -148,6 +148,10 @@ function parseVenue(html) {
   rest = y ? rest.slice(y.index + y[0].length) : rest.replace(/^\s*\d{4}\s*,?/, "");   // year comes from "year"
   const vol = rest.match(/<(i|em)>([\s\S]*?)<\/\1>/i);
   if (vol) { out.volume = clean(vol[2]); rest = rest.slice(vol.index + vol[0].length); }
+  let iss = rest.match(/^\s*\(([^)]*)\)/);                 // <i>148</i>(12)  or  <i>148 (12)</i>
+  if (iss) rest = rest.slice(iss[0].length);
+  else if ((iss = out.volume.match(/\s*\(([^)]*)\)$/))) out.volume = out.volume.slice(0, iss.index);
+  if (iss) out.issue = clean(iss[1]);
   out.pages = clean(rest).replace(/^[,;\s]+/, "").replace(/[.,;\s]+$/, "");
   return out;
 }
@@ -156,7 +160,7 @@ function parsePub(p, idx) {
   const v = parseVenue(p.venue || p.caption);
   const kind = /rxiv|preprint/i.test(v.journal) ? "preprint" : (p.type === "review" ? "review" : "paper");
   return { idx, kind, year: +p.year || 0, authors: parseAuthors(p.authors), title: htmlRuns(p.title),
-           journal: v.journal, volume: v.volume, pages: v.pages, doi: String(p.doi || "").trim() };
+           journal: v.journal, volume: v.volume, issue: String(p.issue || "").trim() || v.issue, pages: v.pages, doi: String(p.doi || "").trim() };
 }
 
 /* ======================================================================== */
@@ -204,6 +208,7 @@ function fieldRuns(key, e, s) {
     case "journal": return e.journal ? [{ t: e.journal }] : [];
     case "year":    return e.year ? [{ t: String(e.year) }] : [];
     case "volume":  return e.volume ? [{ t: e.volume }] : [];
+    case "issue":   return e.issue ? [{ t: e.issue }] : [];
     case "pages":   return e.pages ? [{ t: s.enDash ? e.pages.replace(/(\w)\s*[-\u2010\u2011\u2012\u2014]\s*(\w)/g, "$1\u2013$2") : e.pages }] : [];
     case "doi": {
       if (!e.doi) return [];
@@ -482,9 +487,17 @@ function load() {
     const o = JSON.parse(localStorage.getItem(STORE_KEY) || "null");
     if (o && typeof o === "object") Object.keys(s).forEach(k => {
       if (k === "fields") {
-        if (Array.isArray(o.fields) && o.fields.length === s.fields.length &&
-            s.fields.every(f => o.fields.some(g => g && g.key === f.key)))
-          s.fields = o.fields.map(g => Object.assign(F(g.key, 1, 0, 0, "", ""), g));
+        const known = s.fields.map(f => f.key);
+        if (Array.isArray(o.fields) && o.fields.every(g => g && known.includes(g.key)) &&
+            new Set(o.fields.map(g => g.key)).size === o.fields.length) {
+          const kept = o.fields.map(g => Object.assign(F(g.key, 1, 0, 0, "", ""), g));
+          s.fields.forEach((f, i) => {           // a field added later (e.g. "issue"): put it after its neighbour
+            if (kept.some(g => g.key === f.key)) return;
+            const prev = i ? kept.findIndex(g => g.key === s.fields[i - 1].key) : -1;
+            kept.splice(prev + 1, 0, clone(f));
+          });
+          s.fields = kept;
+        }
       } else if (s[k] && typeof s[k] === "object") {
         if (o[k] && typeof o[k] === "object")
           Object.keys(s[k]).forEach(j => { if (typeof o[k][j] === typeof s[k][j]) s[k][j] = o[k][j]; });
@@ -552,8 +565,8 @@ function renderForm() {
     sec("authors", "Authors",
       sel("names.order", n.order, [["gf", "Given Family \u2014 Zhe Wang"], ["f,g", "Family, Given \u2014 Wang, Zhe"], ["fg", "Family Given \u2014 Wang Zhe"]], "Name order") +
       sel("names.given", n.given, [["full", "Full \u2014 Zhe"], ["init", "Initials \u2014 Z."], ["initnd", "Initials, no periods \u2014 Z"]], "Given names") +
-      chk("names.middle", n.middle, "Keep middle names (Shu <u>I.</u> Takagi)") +
-      chk("names.initSpace", n.initSpace, "Space between initials (S.&#8239;I. rather than S.I.)") +
+      chk("names.middle", n.middle, "Keep middle names") +
+      chk("names.initSpace", n.initSpace, "Space between initials") +
       chk("names.caps", n.caps, "Family names in capitals (WANG)") +
       sel("names.sep", n.sep, [[", ", "Comma \u2014 A, B"], ["; ", "Semicolon \u2014 A; B"]], "Between authors") +
       sel("names.last", n.last, [["none", "A, B, C"], ["and", "A, B and C"], ["oxand", "A, B, and C"], ["amp", "A, B & C"], ["oxamp", "A, B, & C"]], "Before last author") +

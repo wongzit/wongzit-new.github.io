@@ -516,6 +516,8 @@ Field by field:
 - **`venue`** — HTML string, following the house style:
   `<i>` = journal name and volume, `<b>` = year, plain text = page numbers
   (page numbers stay upright, not italic).
+- **`issue`** — optional issue number, e.g. `"issue": "12"`. Not shown on the
+  site; used by the Export panel (see *Export to Word* below).
 - **`image`** — TOC graphic in `assets/img/pubs/`. Any aspect ratio; it is shown
   at its natural proportions and enlarges in a lightbox when clicked.
 - **`doi`** — the bare DOI (no `https://doi.org/`). Supplying it turns on the
@@ -607,7 +609,7 @@ citation style (ACS, RSC, Wiley, Nature, APA, or this website's full-name
 style) and then fine-tunes it: author name order (Zhe Wang / Wang, Z. / Wang Z.),
 full given names or initials, middle names, "and" / "&" before the last author,
 "et al." after N authors, highlighting of your own name, the `*` marks, and for
-each field (authors, title, journal, year, volume, pages, DOI) whether it is
+each field (authors, title, journal, year, volume, issue, pages, DOI) whether it is
 shown, **bold** / *italic*, wrapped in ( ) or [ ], the text placed before it,
 and its position. List options cover paper / review / preprint selection, a
 year range, order, year or type headings, numbering (1. [1] (1) 1), up or
@@ -621,7 +623,10 @@ house style above: your name in `<span class="me">`, corresponding marks as
 `<sup>*</sup>`, and a venue written `<i>Journal</i>, <b>year</b>, <i>volume</i>,
 pages.` Entries that deviate still export, with the venue as-is. Entries whose
 journal contains "rxiv" count as preprints. The year comes from the `"year"`
-field, not from the venue. Presets, the download file name and the group
+field, not from the venue. The issue number is optional and appears only
+for entries that have one: add `"issue": "12"` to the entry (export only), or
+write it right after the volume in the venue, `<i>148</i>(12), 1–5.`, which also
+shows it on the site. Presets, the download file name and the group
 labels are at the top of `pubexport.js`. To add the button to another page,
 copy the `<button id="pub-export" …>` from `publications.html` into its toolbar
 and load `pubexport.js` after `data/publications.js`.
