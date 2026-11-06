@@ -316,7 +316,7 @@ references (currently 154 in the live repo — most of them are the per-post
 some pages will load a stale stylesheet — that is exactly the bug the count
 check catches.
 
-Current state: live repo is at `?v=27`, test repo at `?v=38`. They are
+Current state: live repo is at `?v=28`, test repo at `?v=40`. They are
 independent counters; do not try to make them match.
 
 ---
@@ -408,6 +408,15 @@ const SITE = {
 - **Add a menu item:** add `{ label: "talks", href: "/talks.html" },` in the
   position you want. Menu order = array order.
 - **Make a dropdown:** add a `children: [...]` array.
+- **Divider / hidden pages in a dropdown:** `{ divider: true }` draws a line;
+  `hidden: true` keeps an item out of the menu, out of the "List by Type" row
+  on the publication pages and out of the sitemap. "books & chapters" and
+  "patents" are hidden until they have entries — to show one, add its entries
+  to `data/publications.js` (`"type": "book"` / `"patent"`, same fields as a
+  paper), set `hidden: false` in `site.js`, and bump `?v=` (§5).
+- The "List by Type" row on the publication pages is built from the
+  publications dropdown, so it never needs editing by hand (`short` gives a
+  shorter label there, e.g. "all").
 - **Paths here start with `/`** (root-relative). `site.js` converts them with
   `siteUrl()`, so they work from inside blog-post folders too. This is the one
   place where a leading slash is correct.
@@ -467,6 +476,8 @@ All three publication pages read one file: **`data/publications.js`**. The
 | `"paper"` | `publications.html`, `papers.html` |
 | `"review"` | `publications.html`, `reviews.html` |
 | `"cover"` | `covers.html` |
+| `"book"` | `books.html` (books & chapters — hidden until you show it, see §6.2) |
+| `"patent"` | `patents.html` (hidden until you show it, see §6.2) |
 
 The file is plain JavaScript data:
 
@@ -487,6 +498,7 @@ window.PUBLICATIONS = [      // ← keep this first line
   "authors": "<span class=\"me\">Zhe Wang</span><sup>*</sup>, Tadashi Mori<sup>*</sup>",
   "venue": "<i>J. Am. Chem. Soc.</i>, <b>2026</b>, <i>148</i>, 20974–20984.",
   "journalFull": "Journal of the American Chemical Society",
+  "issue": "12",
   "image": "assets/img/pubs/wang2026controlling.png",
   "doi": "10.1021/jacs.6b01234",
   "links": {
@@ -522,8 +534,9 @@ Field by field:
   "Journal name: Full name" is chosen (the Wiley and APA presets do), and falls
   back to the abbreviation in `venue` when it is left `""`. Fill it in for each
   new paper or review.
-- **`issue`** — optional issue number, e.g. `"issue": "12"`. Not shown on the
-  site; used by the Export panel (see *Export to Word* below).
+- **`issue`** — the issue number, e.g. `"issue": "12"`. Every paper and review
+  has this line; leave it `""` when unknown or when the journal has no issues.
+  Not shown on the site; used by the Export panel (see *Export to Word* below).
 - **`image`** — TOC graphic in `assets/img/pubs/`. Any aspect ratio; it is shown
   at its natural proportions and enlarges in a lightbox when clicked.
 - **`doi`** — the bare DOI (no `https://doi.org/`). Supplying it turns on the
@@ -631,7 +644,7 @@ pages.` Entries that deviate still export, with the venue as-is. Entries whose
 journal contains "rxiv" count as preprints. The year comes from the `"year"`
 field, not from the venue. Full journal names come from
 `journalFull` (see the field list above). The issue number is optional and appears only
-for entries that have one: add `"issue": "12"` to the entry (export only), or
+for entries that have one: fill in the entry's `"issue"` line (export only), or
 write it right after the volume in the venue, `<i>148</i>(12), 1–5.`, which also
 shows it on the site. Presets, the download file name and the group
 labels are at the top of `pubexport.js`. To add the button to another page,
@@ -876,7 +889,7 @@ The page is not in the top menu; it is reached from the "👥 Team →" button
 next to the "🔬 Compounds" button at the top of `research.html`.
 
 Everything on the team page comes from **`data/team.js`** — edit that file, not
-the page. It has three lists (the instructions at the top of the file show every
+the page. It has two lists (the instructions at the top of the file show every
 field):
 
 - **`members`** — one line per student: `name`, optional `ja` (日本語 name),
@@ -885,8 +898,11 @@ field):
   optional `links` (ORCID, GitHub, Email …). Cards are grouped into doctoral /
   master's / undergraduate automatically.
 - **`alumni`** — `name`, `degree`, `year`, `thesis`, `now` (where they went).
-- **`presentations`** — `date`, `presenter`, `type` (Oral / Poster / Invited),
-  `title`, `meeting`, `place`, optional `award` (shown as 🏆).
+- **Presentations** live in their own file, **`data/presentations.js`**: `date`,
+  `presenter`, `type` (Oral / Poster / Invited), `title`, `meeting`, `place`,
+  optional `award` (🏆). All of them appear on `presentations.html`
+  (Publications ▸ presentations); talks given by students also appear on the
+  team page.
 
 Automatic extras: a student's name in `data/publications.js` is underlined with
 a dotted line and links to their card on every publication page, and their

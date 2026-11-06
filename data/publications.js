@@ -37,6 +37,7 @@ window.PUBLICATIONS = [
     "authors": "Riina Kuwata, Takefumi Imanishi, Shota Hasegawa, <span class=\"me\">Zhe Wang</span>, Junichi Usuba, Kosuke Yasui, Muhammad Usama Gul Khan, Judy I. Wu, Yuta Uetake<sup>*</sup>, Aiko Fukazawa<sup>*</sup>",
     "venue": "<i>J. Am. Chem. Soc.</i>, <b>2026</b>, <i>148</i>, 20974–20984.",
     "journalFull": "Journal of the American Chemical Society",
+    "issue": "",
     "image": "assets/img/pubs/kuwata2026a.png",
     "doi": "10.1021/jacs.6c05255",
     "links": {
@@ -55,6 +56,7 @@ window.PUBLICATIONS = [
     "authors": "Tomohiro Kujime, <span class=\"me\">Zhe Wang</span>, Tadashi Mori<sup>*</sup>",
     "venue": "<i>Angew. Chem. Int. Ed.</i>, <b>2026</b>, <i>65</i>, e6661486.",
     "journalFull": "Angewandte Chemie International Edition",
+    "issue": "",
     "image": "assets/img/pubs/kujime2026conformational.png",
     "doi": "10.1002/anie.6661486",
     "links": {
@@ -72,6 +74,7 @@ window.PUBLICATIONS = [
     "authors": "<span class=\"me\">Zhe Wang</span><sup>*</sup>",
     "venue": "<i>Chemistry</i>, <b>2024</b>, <i>6</i>, 1692–1703.",
     "journalFull": "Chemistry",
+    "issue": "",
     "image": "assets/img/pubs/wang2024pyaroma.png",
     "doi": "10.3390/chemistry6060103",
     "links": {
@@ -90,6 +93,7 @@ window.PUBLICATIONS = [
     "authors": "Qian Liu, Keita Onishi, Yuki Miyazawa, <span class=\"me\">Zhe Wang</span>, Sayaka Hatano, Manabu Abe<sup>*</sup>",
     "venue": "<i>J. Am. Chem. Soc.</i>, <b>2023</b>, <i>145</i>, 27089–27094.",
     "journalFull": "Journal of the American Chemical Society",
+    "issue": "",
     "image": "assets/img/pubs/onishi2023energetically.png",
     "doi": "10.1021/jacs.3c10971",
     "links": {
@@ -106,6 +110,7 @@ window.PUBLICATIONS = [
     "authors": "Yuki Miyazawa, <span class=\"me\">Zhe Wang</span>, Sayaka Hatano, Ryukichi Takagi, Hideto Matsuoka*, Naoka Amamizu, Yasutaka Kitagawa<sup>*</sup>, Eiichi Kayahara, Shigeru Yamago, Manabu Abe<sup>*</sup>",
     "venue": "<i>Chem. Eur. J.</i>, <b>2023</b>, <i>29</i>, e202301009.",
     "journalFull": "Chemistry – A European Journal",
+    "issue": "",
     "image": "assets/img/pubs/miyazawa2023generation.png",
     "doi": "10.1002/chem.202301009",
     "links": {
@@ -122,6 +127,7 @@ window.PUBLICATIONS = [
     "authors": "Qian Liu, <span class=\"me\">Zhe Wang</span>, Manabu Abe<sup>*</sup>",
     "venue": "<i>J. Org. Chem.</i>, <b>2022</b>, <i>87</i>, 1858–1866.",
     "journalFull": "The Journal of Organic Chemistry",
+    "issue": "",
     "image": "assets/img/pubs/liu2022impacts.png",
     "doi": "10.1021/acs.joc.1c02895",
     "links": {
@@ -138,6 +144,7 @@ window.PUBLICATIONS = [
     "authors": "Manabu Abe<sup>*</sup>, <span class=\"me\">Zhe Wang</span>, Rikuo Akisaka",
     "venue": "<i>AsiaChem</i>, <b>2021</b>, <i>2</i>, 32–41.",
     "journalFull": "AsiaChem",
+    "issue": "",
     "image": "assets/img/pubs/abe2021new.png",
     "doi": "10.51167/acm00020.51167/acm00021",
     "links": {
@@ -154,6 +161,7 @@ window.PUBLICATIONS = [
     "authors": "Ryo Murata, <span class=\"me\">Zhe Wang</span>, Manabu Abe<sup>*</sup>",
     "venue": "<i>Aust. J. Chem.</i>, <b>2021</b>, <i>74</i>, 827–837.",
     "journalFull": "Australian Journal of Chemistry",
+    "issue": "",
     "image": "assets/img/pubs/murata2021singly.png",
     "doi": "10.1071/ch21186",
     "links": {
@@ -170,6 +178,7 @@ window.PUBLICATIONS = [
     "authors": "<span class=\"me\">Zhe Wang</span>, Pinky Yadav, Manabu Abe<sup>*</sup>",
     "venue": "<i>Chem. Commun.</i>, <b>2021</b>, <i>57</i>, 11301–11309.",
     "journalFull": "Chemical Communications",
+    "issue": "",
     "image": "assets/img/pubs/wang2021long.png",
     "doi": "10.1039/d1cc04581d",
     "links": {
@@ -187,6 +196,7 @@ window.PUBLICATIONS = [
     "authors": "<span class=\"me\">Zhe Wang</span>, Ryo Murata, Manabu Abe<sup>*</sup>",
     "venue": "<i>ACS Omega</i>, <b>2021</b>, <i>6</i>, 22773–22779.",
     "journalFull": "ACS Omega",
+    "issue": "",
     "image": "assets/img/pubs/wang2021somo.png",
     "doi": "10.1021/acsomega.1c03125",
     "links": {
@@ -203,6 +213,7 @@ window.PUBLICATIONS = [
     "authors": "Ryo Murata, <span class=\"me\">Zhe Wang</span>, Yuki Miyazawa, Ivana Antol<sup>*</sup>, Shigeru Yamago, Manabu Abe<sup>*</sup>",
     "venue": "<i>Org. Lett.</i>, <b>2021</b>, <i>23</i>, 4955–4959.",
     "journalFull": "Organic Letters",
+    "issue": "",
     "image": "assets/img/pubs/murata2021somo.png",
     "doi": "10.1021/acs.orglett.1c01137",
     "links": {
@@ -220,6 +231,7 @@ window.PUBLICATIONS = [
     "authors": "Yuki Miyazawa, <span class=\"me\">Zhe Wang</span>, Misaki Matsumoto, Sayaka Hatano, Ivana Antol<sup>*</sup>, Eiichi Kayahara, Shigeru Yamago<sup>*</sup>, Manabu Abe<sup>*</sup>",
     "venue": "<i>J. Am. Chem. Soc.</i>, <b>2021</b>, <i>143</i>, 7426–7439.",
     "journalFull": "Journal of the American Chemical Society",
+    "issue": "",
     "image": "assets/img/pubs/miyazawa2021diradicals.png",
     "doi": "10.1021/jacs.1c01329",
     "links": {
@@ -237,6 +249,7 @@ window.PUBLICATIONS = [
     "authors": "<span class=\"me\">Zhe Wang</span>, Rikuo Akisaka, Sohshi Yabumoto, Tatsuo Nakagawa, Sayaka Hatano, Manabu Abe<sup>*</sup>",
     "venue": "<i>Chem. Sci.</i>, <b>2021</b>, <i>12</i>, 613–625.",
     "journalFull": "Chemical Science",
+    "issue": "",
     "image": "assets/img/pubs/wang2021stretch.png",
     "doi": "10.1039/d0sc05311b",
     "links": {
@@ -254,6 +267,7 @@ window.PUBLICATIONS = [
     "authors": "Yuta Harada, <span class=\"me\">Zhe Wang</span>, Shunsuke Kumashiro, Sayaka Hatano, Manabu Abe<sup>*</sup>",
     "venue": "<i>Chem. Eur. J.</i>, <b>2018</b>, <i>24</i>, 14808–14815.",
     "journalFull": "Chemistry – A European Journal",
+    "issue": "",
     "image": "assets/img/pubs/harada2018extremely.png",
     "doi": "10.1002/chem.201803076",
     "links": {
