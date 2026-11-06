@@ -146,7 +146,9 @@ wongzit.github.io/
 ├── programs.html             ← program index (cards link to program/ pages)
 ├── teaching.html             ← teaching
 ├── news.html                 ← all news, by year (filled from data/news.js)
-├── team.html                 ← students: members, alumni, presentations (filled from data/team.js)
+├── presentations.html        ← talks & posters, by year (filled from data/presentations.js)
+├── books.html, patents.html  ← books & chapters / patents (hidden from the menu until there are any)
+├── team.html                 ← students: members, alumni, joint papers (filled from data/team.js)
 ├── links.html                ← useful links
 ├── 404.html                  ← "page not found" page, 6 languages (§6.7)
 ├── blog.html                 ← blog index (search + tag filter)
@@ -155,7 +157,8 @@ wongzit.github.io/
 ├── data/
 │   ├── publications.js       ← THE publication list. All 3 pub pages read this.
 │   ├── news.js               ← every news item (home shows 5 newest; news.html all)
-│   └── team.js               ← students, alumni and presentations for team.html
+│   ├── team.js               ← students and alumni for team.html
+│   └── presentations.js      ← every talk and poster for presentations.html
 │
 ├── posts/
 │   ├── posts.json            ← blog index: slug, title, date, tags, summary
@@ -316,7 +319,7 @@ references (currently 154 in the live repo — most of them are the per-post
 some pages will load a stale stylesheet — that is exactly the bug the count
 check catches.
 
-Current state: live repo is at `?v=28`, test repo at `?v=40`. They are
+Current state: live repo is at `?v=28`, test repo at `?v=44`. They are
 independent counters; do not try to make them match.
 
 ---
@@ -416,7 +419,8 @@ const SITE = {
   paper), set `hidden: false` in `site.js`, and bump `?v=` (§5).
 - The "List by Type" row on the publication pages is built from the
   publications dropdown, so it never needs editing by hand (`short` gives a
-  shorter label there, e.g. "all").
+  shorter label there, e.g. "all"; `listByType: false` keeps an item in the
+  menu but out of that row — used for "presentations").
 - **Paths here start with `/`** (root-relative). `site.js` converts them with
   `siteUrl()`, so they work from inside blog-post folders too. This is the one
   place where a leading slash is correct.
@@ -898,11 +902,17 @@ field):
   optional `links` (ORCID, GitHub, Email …). Cards are grouped into doctoral /
   master's / undergraduate automatically.
 - **`alumni`** — `name`, `degree`, `year`, `thesis`, `now` (where they went).
-- **Presentations** live in their own file, **`data/presentations.js`**: `date`,
-  `presenter`, `type` (Oral / Poster / Invited), `title`, `meeting`, `place`,
-  optional `award` (🏆). All of them appear on `presentations.html`
-  (Publications ▸ presentations); talks given by students also appear on the
-  team page.
+- **Presentations** are not on the team page; they live in their own file,
+  **`data/presentations.js`**: `date`, `scope` (`"international"` or
+  `"domestic"`), `presenter`, optional `authors`, `type` (Oral / Poster /
+  Invited), `title`, `meeting`, `place`, optional `award` (🏆). They are shown
+  on `presentations.html` (Publications ▸ presentations), grouped by year, with
+  an International / Domestic tag after each title. Below the title comes the
+  author list with **only the presenter highlighted** (bold, accent underline);
+  nobody else — you or students — gets any special mark there. Without
+  `authors`, just the presenter's name is shown. The presenter must be written
+  the same way in both fields; if it is not found in `authors`, the line ends
+  with "(presented by …)".
 
 Automatic extras: a student's name in `data/publications.js` is underlined with
 a dotted line and links to their card on every publication page, and their
@@ -1121,7 +1131,8 @@ git push
 | Sitemap for Google (after adding/removing pages) | run `python3 tools/make_sitemap.py` (live repo) |
 | Mouse pointer (spin arrows) | `assets/img/cursor/` + "MOUSE POINTER" block at the top of `style.css` |
 | Year / sort menu labels on publications | `ALL_YEARS_LABEL`, `SORT_OPTIONS` in `assets/js/pubs.js` |
-| Students, alumni, presentations | `data/team.js` (team.html builds itself) |
+| Students, alumni | `data/team.js` (team.html builds itself) |
+| Presentations (talks, posters) | `data/presentations.js` (presentations.html builds itself) |
 
 **Non-negotiable rules**
 

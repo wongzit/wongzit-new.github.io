@@ -1,14 +1,18 @@
 /* ==========================================================================
    data/presentations.js — every conference talk and poster, yours and your
-   students'. Shown on presentations.html (Publications ▸ presentations);
-   talks given by students also appear on team.html.
+   students'. Shown on presentations.html (Publications ▸ presentations).
 
    One entry per presentation:
-     { date: "YYYY-MM-DD", presenter: "Zhe Wang", type: "Oral" | "Poster" | "Invited",
-       title: `…`, meeting: `…`, place: "…", award: "…" },
+     { date: "YYYY-MM-DD", scope: "international" | "domestic", presenter: "Zhe Wang",
+       authors: `…`, type: "Oral" | "Poster" | "Invited", title: `…`, meeting: `…`,
+       place: "…", award: "…" },
 
-     presenter   your own name is shown in bold; a student's name (as written in
-                 data/team.js) links to their card on the team page
+     scope       "international" (国際学会) or "domestic" (国内学会) — shown as a tag
+                 after the title
+     presenter   the person who gave the talk — the only name that is highlighted
+     authors     optional: the full author list, written as in the program
+                 (HTML such as <sup>*</sup> is fine). The presenter's name inside
+                 it is highlighted. Without "authors", only the presenter is shown.
      award       optional, shown with 🏆
 
    ⚠️  The entries below are EXAMPLES (example: true) — replace them with real ones.
@@ -17,11 +21,13 @@
    • Comma after every entry except the last one.
    ========================================================================== */
 window.PRESENTATIONS = [
-  { date: "2026-09-18", presenter: "Taro Sample", type: "Poster", example: true,
+  { date: "2026-09-18", scope: "domestic", presenter: "Taro Sample", type: "Poster", example: true,
+    authors: `Taro Sample, Hanako Example, Zhe Wang`,
     title: `Example poster title`, meeting: `Example Symposium on Physical Organic Chemistry`, place: "Osaka",
     award: "Best Poster Award" },
-  { date: "2026-03-20", presenter: "Zhe Wang", type: "Oral", example: true,
-    title: `Example talk title`, meeting: `Example Annual Meeting`, place: "Tokyo" },
-  { date: "2025-11-02", presenter: "Hanako Example", type: "Oral", example: true,
+  { date: "2026-03-20", scope: "international", presenter: "Zhe Wang", type: "Invited", example: true,
+    title: `Example invited talk title`, meeting: `Example International Symposium on Physical Organic Chemistry`, place: "Seoul, Korea" },
+  { date: "2025-11-02", scope: "domestic", presenter: "Hanako Example", type: "Oral", example: true,
+    authors: `Jiro Demo, Hanako Example, Zhe Wang`,
     title: `Example oral presentation title`, meeting: `Example Conference on Structural Organic Chemistry`, place: "Kyoto" }
 ];

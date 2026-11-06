@@ -14,7 +14,7 @@
      links         optional, e.g. { ORCID: "https://orcid.org/…", GitHub: "https://github.com/…", Email: "mailto:…" }
      aliases       optional other spellings used in papers, e.g. ["H. Example"]
    alumni:         { name, ja, degree, year, thesis, now }
-   (Presentations are in data/presentations.js; students' talks appear here automatically.)
+   (Presentations are in data/presentations.js and shown on presentations.html.)
 
    • Write text between backticks ` … ` so quotes and apostrophes need no escaping.
    • Comma after every entry except the last one in each list.

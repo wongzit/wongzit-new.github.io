@@ -12,7 +12,6 @@ const TEAM_GROUPS = [
   { key: "",  label: "Researchers & others",   ja: "研究員・その他" },
 ];
 const TEAM_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const TEAM_ME = "Zhe Wang";
 
 const teamStrip = s => String(s || "").replace(/<[^>]+>/g, "");
 const teamSlug = name => "m-" + teamStrip(name).toLowerCase().normalize("NFKD")
@@ -55,7 +54,7 @@ const teamHasMember = html => teamLinkNames(html) !== html;
 function renderTeam() {
   const T = window.TEAM;
   const fail = (id, msg) => { const el = document.getElementById(id); if (el) el.innerHTML = `<p class="muted">${msg}</p>`; };
-  if (!T) { ["team-members", "team-alumni", "team-presentations", "team-pubs"]
+  if (!T) { ["team-members", "team-alumni", "team-pubs"]
     .forEach(id => fail(id, "data/team.js did not load. Check it is included and has no syntax error.")); return; }
 
   // Members, grouped D / M / B / others; most senior first within a group.
@@ -105,8 +104,6 @@ function renderTeam() {
       </td></tr>`).join("")}</table>` : `<p class="muted">No alumni yet.</p>`;
   }
 
-  // Presentations given by students (the full list is on presentations.html).
-  renderPresentations("team-presentations", { teamOnly: true });
 
   // Papers with team members — taken from data/publications.js, nothing to enter twice.
   const pubEl = document.getElementById("team-pubs");
@@ -129,9 +126,12 @@ function renderTeam() {
   if (location.hash) { const t = document.querySelector(location.hash); if (t) t.scrollIntoView(); }
 }
 
-/* ---- Presentations (presentations.html, and the student part of team.html) --
+/* ---- Presentations (presentations.html) -----------------------------------
    Data: data/presentations.js (window.PRESENTATIONS). Grouped by year, newest
-   first. Your own name is shown in bold; students' names link to their card. */
+   first; "scope" is shown as an International / Domestic tag after the title.
+   Below the title: the author list ("authors") with only the presenter
+   highlighted, or just the presenter when no author list is given. */
+const PRES_SCOPES = { international: "International", domestic: "Domestic" };
 function teamPresentations() {
   const list = window.PRESENTATIONS || (window.TEAM && window.TEAM.presentations);
   if (!Array.isArray(list)) throw new Error("data/presentations.js did not load. Check it is included and has no syntax error.");
@@ -146,11 +146,25 @@ function renderPresentations(targetId, opts = {}) {
   catch (e) { el.innerHTML = `<p class="muted">${e.message}</p>`; return; }
   if (opts.teamOnly) pres = pres.filter(p => teamHasMember(p.presenter || ""));
 
-  const who = n => teamStrip(n).toLowerCase() === TEAM_ME.toLowerCase()
-    ? `<span class="team-me">${n}</span>` : teamLinkNames(n);
+  // The author list with only the presenter highlighted (or just the presenter).
+  const mark = s => `<span class="pres-presenter" title="Presenter">${s}</span>`;
+  const people = p => {
+    const name = teamStrip(p.presenter || "").trim();
+    if (!p.authors) return name ? mark(p.presenter) : "";
+    if (!name) return p.authors;
+    const re = new RegExp("(^|[^\\p{L}])(" + teamEsc(name) + ")(?![\\p{L}])", "iu");
+    let done = false;
+    const out = String(p.authors).split(/(<[^>]+>)/).map(part => (part.startsWith("<") || done) ? part :
+      part.replace(re, (m, pre, n) => { done = true; return pre + mark(n); })).join("");
+    return done ? out : `${out} (presented by ${mark(p.presenter)})`;   // presenter not found in the list
+  };
+  const scopeTag = p => {
+    const k = String(p.scope || "").toLowerCase();
+    return PRES_SCOPES[k] ? ` <span class="team-tag scope-${k}">${PRES_SCOPES[k]}</span>` : "";
+  };
   const row = p => `<tr><td>${teamDate(p.date)}</td><td>
-      <span class="team-pres-title">${p.title}</span>${p.type ? ` <span class="team-tag">${p.type}</span>` : ""}${p.award ? ` <span class="team-tag award">🏆 ${p.award}</span>` : ""}${teamExample(p)}
-      <div class="team-pres-meta">${who(p.presenter || "")}${p.meeting ? ` · ${p.meeting}` : ""}${p.place ? ` · ${p.place}` : ""}</div>
+      <span class="team-pres-title">${p.title}</span>${scopeTag(p)}${p.type ? ` <span class="team-tag">${p.type}</span>` : ""}${p.award ? ` <span class="team-tag award">🏆 ${p.award}</span>` : ""}${teamExample(p)}
+      <div class="team-pres-meta">${people(p)}${p.meeting ? ` · ${p.meeting}` : ""}${p.place ? ` · ${p.place}` : ""}</div>
     </td></tr>`;
   const years = [...new Set(pres.map(p => String(p.date).slice(0, 4)))];
   el.innerHTML = pres.length ? years.map(y => `
@@ -158,14 +172,4 @@ function renderPresentations(targetId, opts = {}) {
       <span class="pub-year-mark">${y}</span>
       <table class="info-table">${pres.filter(p => String(p.date).startsWith(y)).map(row).join("")}</table>
     </div>`).join("") : `<p class="muted">No presentations yet.</p>`;
-
-  // Optional summary line, e.g. "12 presentations · 3 invited · 2 awards"
-  const sum = opts.summaryId && document.getElementById(opts.summaryId);
-  if (sum && pres.length) {
-    const n = (k, w) => `${k} ${w}${k === 1 ? "" : "s"}`;
-    const invited = pres.filter(p => /invited/i.test(p.type || "")).length;
-    const awards = pres.filter(p => p.award).length;
-    sum.textContent = [n(pres.length, "presentation"), invited && `${invited} invited`, awards && n(awards, "award")]
-      .filter(Boolean).join(" · ");
-  }
 }

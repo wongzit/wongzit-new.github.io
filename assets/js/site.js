@@ -24,7 +24,8 @@ const SITE = {
     { label: "research",     href: "/research.html" },
     {
       label: "publications", href: "/publications.html",
-      // "short" = label in the "List by Type" row on the publication pages.
+      // "short" = label in the "List by Type" row on the publication pages;
+      // listByType: false keeps an item in the menu but out of that row.
       // { divider: true } draws a line in the menu. hidden: true keeps a page
       // out of the menu, the "List by Type" row and the sitemap — set it to
       // false once the page has entries.
@@ -35,7 +36,7 @@ const SITE = {
         { label: "cover pictures",     href: "/covers.html" },
         { divider: true },
         { label: "books & chapters",   href: "/books.html",   hidden: true },
-        { label: "presentations",      href: "/presentations.html" },
+        { label: "presentations",      href: "/presentations.html", listByType: false },
         { label: "patents",            href: "/patents.html", hidden: true },
       ],
     },
@@ -154,7 +155,7 @@ function buildPubTypeNav() {
   const pubs = SITE.nav.find(i => i.href === "/publications.html");
   if (!el || !pubs || !pubs.children) return;
   const rel = currentRel();
-  el.innerHTML = "<b>List by Type:</b> " + pubs.children.filter(navShown).map(c =>
+  el.innerHTML = "<b>List by Type:</b> " + pubs.children.filter(c => navShown(c) && c.listByType !== false).map(c =>
     `<a href="${siteUrl(c.href)}"${navRelOf(c.href) === rel ? ' class="active"' : ""}>${c.short || c.label}</a>`)
     .join('<span class="sep">/</span>');
 }
