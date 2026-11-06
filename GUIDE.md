@@ -486,6 +486,7 @@ window.PUBLICATIONS = [      // ← keep this first line
   "title": "Controlling through-space spin coupling in helical diradicaloids",
   "authors": "<span class=\"me\">Zhe Wang</span><sup>*</sup>, Tadashi Mori<sup>*</sup>",
   "venue": "<i>J. Am. Chem. Soc.</i>, <b>2026</b>, <i>148</i>, 20974–20984.",
+  "journalFull": "Journal of the American Chemical Society",
   "image": "assets/img/pubs/wang2026controlling.png",
   "doi": "10.1021/jacs.6b01234",
   "links": {
@@ -516,6 +517,11 @@ Field by field:
 - **`venue`** — HTML string, following the house style:
   `<i>` = journal name and volume, `<b>` = year, plain text = page numbers
   (page numbers stay upright, not italic).
+- **`journalFull`** — the journal's full name, e.g. `"Journal of the American
+  Chemical Society"`. Not shown on the site; the Export panel uses it when
+  "Journal name: Full name" is chosen (the Wiley and APA presets do), and falls
+  back to the abbreviation in `venue` when it is left `""`. Fill it in for each
+  new paper or review.
 - **`issue`** — optional issue number, e.g. `"issue": "12"`. Not shown on the
   site; used by the Export panel (see *Export to Word* below).
 - **`image`** — TOC graphic in `assets/img/pubs/`. Any aspect ratio; it is shown
@@ -623,7 +629,8 @@ house style above: your name in `<span class="me">`, corresponding marks as
 `<sup>*</sup>`, and a venue written `<i>Journal</i>, <b>year</b>, <i>volume</i>,
 pages.` Entries that deviate still export, with the venue as-is. Entries whose
 journal contains "rxiv" count as preprints. The year comes from the `"year"`
-field, not from the venue. The issue number is optional and appears only
+field, not from the venue. Full journal names come from
+`journalFull` (see the field list above). The issue number is optional and appears only
 for entries that have one: add `"issue": "12"` to the entry (export only), or
 write it right after the volume in the venue, `<i>148</i>(12), 1–5.`, which also
 shows it on the site. Presets, the download file name and the group

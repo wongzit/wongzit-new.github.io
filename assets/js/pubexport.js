@@ -52,6 +52,7 @@ const PAPER = { A4: [11906, 16838], Letter: [12240, 15840] };   // page size in 
    names.given   "full" | "init" (Z.) | "initnd" (Z)
    names.last    "none" A, B, C | "and" A, B and C | "oxand" A, B, and C
                  "amp" A, B & C | "oxamp" A, B, & C
+   journal       "abbr" | "full" (full = "journalFull" from the data, when filled in)
    fields        in output order; F(key, shown, bold, italic, brackets, text before)
    -------------------------------------------------------------------------- */
 const F = (key, on, b, i, wrap, before) => ({ key, on: !!on, b: !!b, i: !!i, wrap, before });
@@ -64,7 +65,7 @@ const PRESETS = {
     names: { order: "gf", given: "init", middle: true, initSpace: true, caps: false, sep: ", ", last: "and" },
     fields: [F("authors",1,0,0,"",""), F("journal",1,0,1,"",", "), F("year",1,0,0,"",", "), F("volume",1,1,0,"",", "),
              F("issue",0,0,0,"()"," "), F("pages",1,0,0,"",", "), F("title",0,0,0,"",", "), F("doi",0,0,0,"",", ")] },
-  wiley: { label: "Wiley \u2014 Angew. Chem., Chem. Eur. J.", doiFmt: "label", ending: ".",
+  wiley: { label: "Wiley \u2014 Angew. Chem., Chem. Eur. J.", journal: "full", doiFmt: "label", ending: ".",
     names: { order: "gf", given: "init", middle: true, initSpace: true, caps: false, sep: ", ", last: "none" },
     fields: [F("authors",1,0,0,"",""), F("journal",1,0,1,"",", "), F("year",1,1,0,""," "), F("volume",1,0,1,"",", "),
              F("issue",0,0,0,"()"," "), F("pages",1,0,0,"",", "), F("title",0,0,0,"",", "), F("doi",0,0,0,"",", ")] },
@@ -72,7 +73,7 @@ const PRESETS = {
     names: { order: "f,g", given: "init", middle: true, initSpace: true, caps: false, sep: ", ", last: "amp" },
     fields: [F("authors",1,0,0,"",""), F("title",1,0,0,"",". "), F("journal",1,0,1,"",". "), F("volume",1,1,0,""," "),
              F("issue",0,0,0,"()"," "), F("pages",1,0,0,"",", "), F("year",1,0,0,"()"," "), F("doi",0,0,0,"",". ")] },
-  apa: { label: "APA (7th ed.)", doiFmt: "url", ending: ".",
+  apa: { label: "APA (7th ed.)", journal: "full", doiFmt: "url", ending: ".",
     names: { order: "f,g", given: "init", middle: true, initSpace: true, caps: false, sep: ", ", last: "oxamp" },
     fields: [F("authors",1,0,0,"",""), F("year",1,0,0,"()"," "), F("title",1,0,0,"",". "), F("journal",1,0,1,"",". "),
              F("volume",1,0,1,"",", "), F("issue",1,0,0,"()",""), F("pages",1,0,0,"",", "), F("doi",1,0,0,"",". ")] },
@@ -160,7 +161,7 @@ function parsePub(p, idx) {
   const v = parseVenue(p.venue || p.caption);
   const kind = /rxiv|preprint/i.test(v.journal) ? "preprint" : (p.type === "review" ? "review" : "paper");
   return { idx, kind, year: +p.year || 0, authors: parseAuthors(p.authors), title: htmlRuns(p.title),
-           journal: v.journal, volume: v.volume, issue: String(p.issue || "").trim() || v.issue, pages: v.pages, doi: String(p.doi || "").trim() };
+           journal: v.journal, journalFull: clean(p.journalFull || ""), volume: v.volume, issue: String(p.issue || "").trim() || v.issue, pages: v.pages, doi: String(p.doi || "").trim() };
 }
 
 /* ======================================================================== */
@@ -205,7 +206,10 @@ function fieldRuns(key, e, s) {
   switch (key) {
     case "authors": return e.authors.length ? authorRuns(e.authors, s) : [];
     case "title":   return e.title.map(r => Object.assign({}, r));
-    case "journal": return e.journal ? [{ t: e.journal }] : [];
+    case "journal": {                   // full name when chosen and known, else the abbreviation
+      const j = s.journal === "full" && e.journalFull ? e.journalFull : e.journal;
+      return j ? [{ t: j }] : [];
+    }
     case "year":    return e.year ? [{ t: String(e.year) }] : [];
     case "volume":  return e.volume ? [{ t: e.volume }] : [];
     case "issue":   return e.issue ? [{ t: e.issue }] : [];
@@ -471,7 +475,7 @@ function zipStore(files, now) {
 const clone = o => JSON.parse(JSON.stringify(o));
 function applyPreset(s, key) {
   const p = PRESETS[key];
-  s.names = clone(p.names); s.fields = clone(p.fields); s.ending = p.ending; s.doiFmt = p.doiFmt; s.preset = key;
+  s.names = clone(p.names); s.fields = clone(p.fields); s.ending = p.ending; s.doiFmt = p.doiFmt; s.journal = p.journal || "abbr"; s.preset = key;
 }
 function defaults() {
   const s = { preset: DEFAULT_PRESET, maxAuthors: 0, me: "b", marks: true, doiLink: true, enDash: true,
@@ -506,6 +510,7 @@ function load() {
   } catch (e) { /* storage blocked or corrupt: use defaults */ }
   if (!FONTS[s.font]) s.font = "Times New Roman";
   if (!PAPER[s.paper]) s.paper = "A4";
+  if (s.journal !== "full") s.journal = "abbr";
   if (!(s.num in NUMS)) s.num = "dot";
   if (!PRESETS[s.preset] && s.preset !== "custom") s.preset = "custom";
   return s;
@@ -578,6 +583,7 @@ function renderForm() {
       fieldsTable() +
       `<p class="pe-hint">Tick to include \u00b7 <b>B</b>/<i>I</i> bold, italic \u00b7 \u25B2\u25BC order. ` +
       `<b>Before</b> is the text placed in front of a field \u2014 spaces count.</p>` +
+      sel("journal", S.journal, [["abbr", "Abbreviated"], ["full", "Full name"]], "Journal name") +
       txt("ending", S.ending, "End each entry with", "pe-sep") +
       sel("doiFmt", S.doiFmt, [["bare", "10.1021/\u2026"], ["label", "DOI: 10.1021/\u2026"], ["url", "https://doi.org/10.1021/\u2026"]], "DOI format") +
       chk("doiLink", S.doiLink, "DOI as a clickable link") +
@@ -627,7 +633,7 @@ function setPath(o, path, v) {
 }
 
 const NUMERIC = new Set(["size", "gap", "line", "maxAuthors"]);
-const STYLE_PATH = /^(names\.|fields\.|ending$|doiFmt$)/;
+const STYLE_PATH = /^(names\.|fields\.|ending$|doiFmt$|journal$)/;
 function onEdit(ev) {
   const el = ev.target, p = el.dataset && el.dataset.p;
   if (!p) return;

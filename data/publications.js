@@ -36,6 +36,7 @@ window.PUBLICATIONS = [
     "title": "A Persistent Ni(0)–Pentalene Complex with High Fluxionality: Does Stronger Antiaromaticity Promote Metal–Ligand Interactions?",
     "authors": "Riina Kuwata, Takefumi Imanishi, Shota Hasegawa, <span class=\"me\">Zhe Wang</span>, Junichi Usuba, Kosuke Yasui, Muhammad Usama Gul Khan, Judy I. Wu, Yuta Uetake<sup>*</sup>, Aiko Fukazawa<sup>*</sup>",
     "venue": "<i>J. Am. Chem. Soc.</i>, <b>2026</b>, <i>148</i>, 20974–20984.",
+    "journalFull": "Journal of the American Chemical Society",
     "image": "assets/img/pubs/kuwata2026a.png",
     "doi": "10.1021/jacs.6c05255",
     "links": {
@@ -53,6 +54,7 @@ window.PUBLICATIONS = [
     "title": "Conformational Landscapes in the Ground and Excited States Dictate Circularly Polarized Excimer Emission: A Thermodynamic–Kinetic Interplay in Carbazole Dimer Systems",
     "authors": "Tomohiro Kujime, <span class=\"me\">Zhe Wang</span>, Tadashi Mori<sup>*</sup>",
     "venue": "<i>Angew. Chem. Int. Ed.</i>, <b>2026</b>, <i>65</i>, e6661486.",
+    "journalFull": "Angewandte Chemie International Edition",
     "image": "assets/img/pubs/kujime2026conformational.png",
     "doi": "10.1002/anie.6661486",
     "links": {
@@ -69,6 +71,7 @@ window.PUBLICATIONS = [
     "title": "py.Aroma: An Intuitive Graphical User Interface for Diverse Aromaticity Analyses",
     "authors": "<span class=\"me\">Zhe Wang</span><sup>*</sup>",
     "venue": "<i>Chemistry</i>, <b>2024</b>, <i>6</i>, 1692–1703.",
+    "journalFull": "Chemistry",
     "image": "assets/img/pubs/wang2024pyaroma.png",
     "doi": "10.3390/chemistry6060103",
     "links": {
@@ -86,6 +89,7 @@ window.PUBLICATIONS = [
     "title": "Energetically More Stable Singlet Cyclopentane-1,3-diyl Diradical with π-Single Bonding Character than the Corresponding σ-Single Bonded Compound",
     "authors": "Qian Liu, Keita Onishi, Yuki Miyazawa, <span class=\"me\">Zhe Wang</span>, Sayaka Hatano, Manabu Abe<sup>*</sup>",
     "venue": "<i>J. Am. Chem. Soc.</i>, <b>2023</b>, <i>145</i>, 27089–27094.",
+    "journalFull": "Journal of the American Chemical Society",
     "image": "assets/img/pubs/onishi2023energetically.png",
     "doi": "10.1021/jacs.3c10971",
     "links": {
@@ -101,6 +105,7 @@ window.PUBLICATIONS = [
     "title": "Generation and Characterization of a Tetraradical Embedded in a Curved Cyclic Paraphenylene Unit",
     "authors": "Yuki Miyazawa, <span class=\"me\">Zhe Wang</span>, Sayaka Hatano, Ryukichi Takagi, Hideto Matsuoka*, Naoka Amamizu, Yasutaka Kitagawa<sup>*</sup>, Eiichi Kayahara, Shigeru Yamago, Manabu Abe<sup>*</sup>",
     "venue": "<i>Chem. Eur. J.</i>, <b>2023</b>, <i>29</i>, e202301009.",
+    "journalFull": "Chemistry – A European Journal",
     "image": "assets/img/pubs/miyazawa2023generation.png",
     "doi": "10.1002/chem.202301009",
     "links": {
@@ -116,6 +121,7 @@ window.PUBLICATIONS = [
     "title": "Impacts of Solvent and Alkyl Chain Length on the Lifetime of Singlet Cyclopentane-1,3-diyl Diradicaloids with π-Single Bonding",
     "authors": "Qian Liu, <span class=\"me\">Zhe Wang</span>, Manabu Abe<sup>*</sup>",
     "venue": "<i>J. Org. Chem.</i>, <b>2022</b>, <i>87</i>, 1858–1866.",
+    "journalFull": "The Journal of Organic Chemistry",
     "image": "assets/img/pubs/liu2022impacts.png",
     "doi": "10.1021/acs.joc.1c02895",
     "links": {
@@ -131,6 +137,7 @@ window.PUBLICATIONS = [
     "title": "New Insights into Bond Homolysis Process and Discovery of Novel Bonding System (C–π–C) by Generating Long-lived Singlet Diradicals",
     "authors": "Manabu Abe<sup>*</sup>, <span class=\"me\">Zhe Wang</span>, Rikuo Akisaka",
     "venue": "<i>AsiaChem</i>, <b>2021</b>, <i>2</i>, 32–41.",
+    "journalFull": "AsiaChem",
     "image": "assets/img/pubs/abe2021new.png",
     "doi": "10.51167/acm00020.51167/acm00021",
     "links": {
@@ -146,6 +153,7 @@ window.PUBLICATIONS = [
     "title": "Singly Occupied Molecular Orbital−Highest Occupied Molecular Orbital (SOMO−HOMO) Conversion",
     "authors": "Ryo Murata, <span class=\"me\">Zhe Wang</span>, Manabu Abe<sup>*</sup>",
     "venue": "<i>Aust. J. Chem.</i>, <b>2021</b>, <i>74</i>, 827–837.",
+    "journalFull": "Australian Journal of Chemistry",
     "image": "assets/img/pubs/murata2021singly.png",
     "doi": "10.1071/ch21186",
     "links": {
@@ -161,6 +169,7 @@ window.PUBLICATIONS = [
     "title": "Long-lived localised singlet diradicaloids with carbon–carbon π-single bonding (C–π–C)",
     "authors": "<span class=\"me\">Zhe Wang</span>, Pinky Yadav, Manabu Abe<sup>*</sup>",
     "venue": "<i>Chem. Commun.</i>, <b>2021</b>, <i>57</i>, 11301–11309.",
+    "journalFull": "Chemical Communications",
     "image": "assets/img/pubs/wang2021long.png",
     "doi": "10.1039/d1cc04581d",
     "links": {
@@ -177,6 +186,7 @@ window.PUBLICATIONS = [
     "title": "SOMO–HOMO Conversion in Triplet Cyclopentane-1,3-diyl Diradicals",
     "authors": "<span class=\"me\">Zhe Wang</span>, Ryo Murata, Manabu Abe<sup>*</sup>",
     "venue": "<i>ACS Omega</i>, <b>2021</b>, <i>6</i>, 22773–22779.",
+    "journalFull": "ACS Omega",
     "image": "assets/img/pubs/wang2021somo.png",
     "doi": "10.1021/acsomega.1c03125",
     "links": {
@@ -192,6 +202,7 @@ window.PUBLICATIONS = [
     "title": "SOMO–HOMO Conversion in Triplet Carbenes",
     "authors": "Ryo Murata, <span class=\"me\">Zhe Wang</span>, Yuki Miyazawa, Ivana Antol<sup>*</sup>, Shigeru Yamago, Manabu Abe<sup>*</sup>",
     "venue": "<i>Org. Lett.</i>, <b>2021</b>, <i>23</i>, 4955–4959.",
+    "journalFull": "Organic Letters",
     "image": "assets/img/pubs/murata2021somo.png",
     "doi": "10.1021/acs.orglett.1c01137",
     "links": {
@@ -208,6 +219,7 @@ window.PUBLICATIONS = [
     "title": "1,3-Diradicals Embedded in Curved Paraphenylene Units: Singlet versus Triplet State and In-Plane Aromaticity",
     "authors": "Yuki Miyazawa, <span class=\"me\">Zhe Wang</span>, Misaki Matsumoto, Sayaka Hatano, Ivana Antol<sup>*</sup>, Eiichi Kayahara, Shigeru Yamago<sup>*</sup>, Manabu Abe<sup>*</sup>",
     "venue": "<i>J. Am. Chem. Soc.</i>, <b>2021</b>, <i>143</i>, 7426–7439.",
+    "journalFull": "Journal of the American Chemical Society",
     "image": "assets/img/pubs/miyazawa2021diradicals.png",
     "doi": "10.1021/jacs.1c01329",
     "links": {
@@ -224,6 +236,7 @@ window.PUBLICATIONS = [
     "title": "Impact of the macrocyclic structure and dynamic solvent effect on the reactivity of a localised singlet diradicaloid with π-single bonding character",
     "authors": "<span class=\"me\">Zhe Wang</span>, Rikuo Akisaka, Sohshi Yabumoto, Tatsuo Nakagawa, Sayaka Hatano, Manabu Abe<sup>*</sup>",
     "venue": "<i>Chem. Sci.</i>, <b>2021</b>, <i>12</i>, 613–625.",
+    "journalFull": "Chemical Science",
     "image": "assets/img/pubs/wang2021stretch.png",
     "doi": "10.1039/d0sc05311b",
     "links": {
@@ -240,6 +253,7 @@ window.PUBLICATIONS = [
     "title": "Extremely Long Lived Localized Singlet Diradicals in a Macrocyclic Structure: A Case Study on the Stretch Effect",
     "authors": "Yuta Harada, <span class=\"me\">Zhe Wang</span>, Shunsuke Kumashiro, Sayaka Hatano, Manabu Abe<sup>*</sup>",
     "venue": "<i>Chem. Eur. J.</i>, <b>2018</b>, <i>24</i>, 14808–14815.",
+    "journalFull": "Chemistry – A European Journal",
     "image": "assets/img/pubs/harada2018extremely.png",
     "doi": "10.1002/chem.201803076",
     "links": {
