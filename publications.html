@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Publications · Zhe WANG</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=37">
+  <link rel="stylesheet" href="assets/css/style.css?v=38">
 </head>
 <body>
   <div id="site-header"></div>
@@ -43,11 +43,16 @@
       <a href="reviews.html">accounts &amp; reviews</a><span class="sep">/</span>
       <a href="covers.html">cover pictures</a>
     </p>
-    <!-- Search box + year and sort pull-downs. pubs.js fills in the menus. -->
+    <!-- Search box + year and sort pull-downs (pubs.js fills in the menus) + Export button. -->
     <div class="pub-toolbar">
       <input id="pub-filter" class="pub-filter" type="search" placeholder="Search by title, author, journal or year" aria-label="Search publications">
       <select id="pub-year" class="pub-select" aria-label="Publication year"></select>
       <select id="pub-sort" class="pub-select" aria-label="Sort order"></select>
+      <!-- Export to Word: opens the panel built by assets/js/pubexport.js -->
+      <button id="pub-export" class="pub-export-btn" type="button" aria-haspopup="dialog" title="Export the list as a Word file">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Export
+      </button>
     </div>
 
     <div id="pub-list"></div>
@@ -59,11 +64,12 @@
   <script async src="https://badge.dimensions.ai/badge.js"></script>
   <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
 
-  <script src="data/publications.js?v=37"></script>
-  <script src="assets/js/site.js?v=37"></script>
+  <script src="data/publications.js?v=38"></script>
+  <script src="assets/js/site.js?v=38"></script>
   <script src="data/team.js"></script>
-  <script src="assets/js/team.js?v=37"></script>
-  <script src="assets/js/pubs.js?v=37"></script>
+  <script src="assets/js/team.js?v=38"></script>
+  <script src="assets/js/pubs.js?v=38"></script>
+  <script src="assets/js/pubexport.js?v=38"></script>
   <script>renderPublications(["paper", "review"]);</script>
 </body>
 </html>
