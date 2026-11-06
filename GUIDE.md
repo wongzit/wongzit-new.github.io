@@ -319,7 +319,7 @@ references (currently 154 in the live repo — most of them are the per-post
 some pages will load a stale stylesheet — that is exactly the bug the count
 check catches.
 
-Current state: live repo is at `?v=29`, test repo at `?v=46`. They are
+Current state: live repo is at `?v=30`, test repo at `?v=46`. They are
 independent counters; do not try to make them match.
 
 ---
