@@ -319,7 +319,7 @@ references (currently 154 in the live repo — most of them are the per-post
 some pages will load a stale stylesheet — that is exactly the bug the count
 check catches.
 
-Current state: live repo is at `?v=28`, test repo at `?v=44`. They are
+Current state: live repo is at `?v=28`, test repo at `?v=45`. They are
 independent counters; do not try to make them match.
 
 ---
@@ -908,7 +908,7 @@ field):
   Invited), `title`, `meeting`, `place`, optional `award` (🏆). They are shown
   on `presentations.html` (Publications ▸ presentations), grouped by year, with
   an International / Domestic tag after each title. Below the title comes the
-  author list with **only the presenter highlighted** (bold, accent underline);
+  author list with **only the presenter highlighted** (dotted accent underline);
   nobody else — you or students — gets any special mark there. Without
   `authors`, just the presenter's name is shown. The presenter must be written
   the same way in both fields; if it is not found in `authors`, the line ends

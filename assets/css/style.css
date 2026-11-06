@@ -247,8 +247,8 @@ tr:target td { background: var(--accent-soft); }
 .team-tag.example { border-style: dashed; color: var(--text-faint); }
 .team-pres-title { color: var(--text); font-weight: 600; }
 .team-pres-meta { color: var(--text-dim); font-size: .92rem; margin-top: 2px; }
-.pres-presenter { color: var(--text); font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent);
-                  text-decoration-thickness: 2px; text-underline-offset: 3px; }   /* presenter on presentations.html */
+.pres-presenter { text-decoration: underline dotted var(--accent); text-decoration-thickness: 2px;
+                  text-underline-offset: 3px; }   /* presenter on presentations.html */
 .team-name { color: inherit; text-decoration: underline dotted var(--accent); text-underline-offset: 3px; }  /* team members in author lists */
 .team-name:hover { color: var(--accent); }
 .team-tag.scope-international { color: var(--accent-2); border-color: color-mix(in srgb, var(--accent-2) 45%, transparent);
